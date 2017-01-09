@@ -11,7 +11,7 @@ public final class Const {
 	/**保存到session中的随机图片变量名*/
 	
 	/**保存到session中的后台用户变量名*/
-	public static final String SESSION_KEY_PLATFORM_USER = "_admin_user";
+	public static final String SESSION_KEY_ADMIN_USER = "_admin_user";
 	public static final String SESSION_KEY_VIDEO_USER = "_video_user";
 	/**保存到cookies中的openid
 	public static final String COOKIES_KEY_OPENID = "_COOKIES_1";*/

@@ -1,5 +1,7 @@
 package com.xushi.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired OrderDao orderDao;
 
 	@Override
+	@Transactional
 	public void saveOrder(Order order) {
 		Order temp = orderDao.getBy("order_num", order.getOrder_num());
 		if( null != temp && NumberUtil.toInt(temp.getId()) != NumberUtil.toInt(order.getId()) ) throw new DaoException("订单号不能重复!");

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.ServletContextAware;
 
 import com.xushi.core.util.Global;
+import com.xushi.service.ConfigService;
 import com.xushi.service.UserService;
 import com.xushi.util.system.Const;
 
@@ -23,6 +24,7 @@ public class Initialization implements ServletContextAware {
 	
 	ServletContext context;
 	@Autowired UserService userService;
+	@Autowired ConfigService configService;
 
 	public void setServletContext(ServletContext context) {
 		this.context = context;
@@ -66,5 +68,6 @@ public class Initialization implements ServletContextAware {
 		
 		//初始管理员
 		userService.initAdminuser();
+		configService.initPay_config();
 	}
 }

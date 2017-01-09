@@ -63,7 +63,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 				dataType = handlerMethod.getMethodAnnotation(DataTypeAnnotation.class);
 			} catch (Exception e) {e.printStackTrace();}
 		}
-		user = UserSessionUtil.getUser(request);
+		user = UserSessionUtil.getAdminUser(request);
 		if( null != user ) return true;
 		redirectTo(dataType, contextPath + currentPath, requestURI, "請登錄。", request, response);
 		return false;

@@ -1,5 +1,7 @@
 package com.xushi.service;
 
+import java.util.List;
+
 import com.xushi.entity.User;
 
 public interface UserService {
@@ -10,5 +12,12 @@ public interface UserService {
 	
 	void saveUser(User user);
 	
+	List<User> findUser(Integer type);
+	
 	void initAdminuser();
+	
+	/**
+	 * 调度处理用户和视频
+	 */
+	void ScheduledHandle();
 }

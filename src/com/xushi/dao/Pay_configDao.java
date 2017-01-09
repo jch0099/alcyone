@@ -6,16 +6,16 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.xushi.core.dao.BaseDaoWithQuery;
-import com.xushi.entity.Video_user;
+import com.xushi.entity.Pay_config;
 
 @Repository
-public class User_vipDao extends BaseDaoWithQuery<Video_user, Integer> {
+public class Pay_configDao extends BaseDaoWithQuery<Pay_config, Integer> {
 		
 	@PersistenceContext
 	EntityManager em;
 
-	protected User_vipDao() {
-		super(Video_user.class);
+	protected Pay_configDao() {
+		super(Pay_config.class);
 	}
 
 	@Override

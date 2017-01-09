@@ -36,7 +36,11 @@ public class User implements Serializable{
 	private String password;
 	
 	@Column(name = "type")
-	private Integer type = 2; //类型  1 管理员 2普通
+	private Integer type = 2; //类型  1.管理员 2.普通 3.vip
+	
+	//vip终止日期
+	@Column(name = "end_date", length = 20)
+	private String end_date;
 	
 	//创建日期
 	@Column(name = "create_time", length = 20)
@@ -80,5 +84,13 @@ public class User implements Serializable{
 
 	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
+	}
+
+	public String getEnd_date() {
+		return end_date;
+	}
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
 	}
 }

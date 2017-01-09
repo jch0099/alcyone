@@ -101,30 +101,6 @@ public class BaseController {
 	}
 
 	/**
-	 * 获取不到使用默认值
-	 * 
-	 * @param name
-	 * @param value
-	 * @param request
-	 * @return
-	 */
-	protected int getInteger(String name, int value, HttpServletRequest request) {
-		String temp = StringUtil.toString(request.getParameter(name)).trim();
-		if ("".equals(temp)) {
-			temp = DB_ZERO;
-		}
-		int result = 0;
-		try {
-			result = Integer.parseInt(temp);
-		} catch (NumberFormatException e) {
-		}
-		if (result == 0 && result != value) {
-			result = value;
-		}
-		return result;
-	}
-
-	/**
 	 * 输出json结果
 	 * 
 	 * @param response

@@ -63,7 +63,7 @@ public class VideoInterceptor extends HandlerInterceptorAdapter {
 				dataType = handlerMethod.getMethodAnnotation(DataTypeAnnotation.class);
 			} catch (Exception e) {e.printStackTrace();}
 		}
-		user = UserSessionUtil.getUser(request);
+		user = UserSessionUtil.getVideoUser(request);
 		if( null != user ) return true;
 		redirectTo(dataType, contextPath + currentPath, requestURI, "請登錄。", request, response);
 		return false;

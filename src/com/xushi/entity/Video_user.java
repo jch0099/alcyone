@@ -38,6 +38,10 @@ public class Video_user implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "video_id")
 	private Video video;
+	
+	//可观看终止日期
+	@Column(name = "end_date", length = 20)
+	private String end_date;
 
 	public Integer getId() {
 		return id;
@@ -61,5 +65,13 @@ public class Video_user implements Serializable {
 
 	public void setVideo(Video video) {
 		this.video = video;
+	}
+
+	public String getEnd_date() {
+		return end_date;
+	}
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
 	}
 }
