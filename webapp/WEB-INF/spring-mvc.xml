@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+    http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-3.1.xsd
+	http://www.springframework.org/schema/cache
+	http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<!-- 扫描并自动装配 -->
+	<context:component-scan base-package="com.xushi" />
+    
+	<!-- 注册MVC驱动 -->
+	<mvc:annotation-driven />
+	
+	<!-- jsp页面解析器 直接用根路径-->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!--1024*1024*1即1M (50M) -->
+		<property name="maxUploadSize" value="52428800" />
+		<property name="resolveLazily" value="true" />
+	</bean>
+    	
+	<jpa:repositories base-package="com.xushi"
+        entity-manager-factory-ref="entityManagerFactory" repository-impl-postfix="Impl">
+	</jpa:repositories>
+
+	<!-- 启用支持Annotation注解方式的事务管理 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- JPA事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	
+	<!-- 声明EntityManagerFactory -->
+	<bean id="entityManagerFactory"	class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="packagesToScan" value="com.xushi"/>
+		<property name="loadTimeWeaver">
+			<bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/> 
+		</property>
+		<property name="persistenceProvider">
+			<bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
+		</property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="MYSQL"/>
+			</bean>
+		</property>
+		<!-- property name="persistenceXmlLocation" value="classpath:persistence.xml"></property -->
+		<property name="jpaProperties">
+			<props>
+			<!-- 
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.jdbc.fetch_size">18</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+			-->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				<!-- 启用Ehcache二级缓存 -->
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 读取配置文件 -->
+	<bean id="readerProperties"
+		class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/jdbc.properties</value>
+		</property>
+	</bean>
+	
+	<!-- 数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">  
+        <property name="driverClass" value="${jdbc.driver}"></property>  
+        <property name="jdbcUrl" value="${jdbc.url}"></property>  
+        <property name="user" value="${jdbc.username}"></property>  
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="acquireRetryAttempts" value="1"></property>   
+        <property name="idleConnectionTestPeriod" value="60"></property>  
+        <property name="maxPoolSize" value="15"></property>   
+        <property name="minPoolSize" value="3"></property>
+        <property name="maxStatements" value="10"></property>  
+    </bean>
+    <!-- 
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+	    <property name="driverClass" value="com.mysql.jdbc.Driver" />
+	    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/xtown?characterEncoding=UTF-8" />
+	    <property name="username" value="xtown" />
+	    <property name="password" value="xtown1234" />
+	    <property name="idleConnectionTestPeriod" value="60" />
+	    <property name="idleMaxAge" value="60" />
+	    <property name="maxConnectionsPerPartition" value="5" />
+	    <property name="minConnectionsPerPartition" value="1" />
+	    <property name="partitionCount" value="3" />
+	    <property name="acquireIncrement" value="2" />
+	    <property name="statementsCacheSize" value="0" />
+	     <property name="releaseHelperThreads" value="3" />
+	</bean>
+ 	-->
+ 	
+ 	<!-- 注册异步与调度 -->
+	<task:executor id="executor" pool-size="5" />  
+    <task:scheduler id="scheduler" pool-size="10" />  
+    <task:annotation-driven executor="executor" scheduler="scheduler" />
+
+    <!-- 注册缓存 -->
+    <cache:annotation-driven/>
+	<bean id="cacheManager" class="org.springframework.cache.support.CompositeCacheManager">
+	    <property name="cacheManagers">
+	        <list>
+	            <ref bean="ehcacheManager"/>
+	        </list>
+	    </property>
+	    <property name="fallbackToNoOpCache" value="false"/>
+	</bean>
+   <!-- Ehcache -->
+   <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+		<property name="cacheManager" ref="ehcache"/>
+   </bean>
+   <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="shared" value="true" />
+   </bean>
+   
+   <!-- AOP -->
+   <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+ </beans>
