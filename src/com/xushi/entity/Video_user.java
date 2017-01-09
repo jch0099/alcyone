@@ -14,16 +14,16 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 /**
- * 文件表
+ * 视频购买
  * @author penken
  * 
  */
 @Entity
-@Table(name = "file_log")
-public class File_log implements Serializable {
+@Table(name = "video_user")
+public class Video_user implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@TableGenerator(name="myGenerator", table="myidlist", pkColumnName = "keyname", pkColumnValue="file_log", valueColumnName = "keyid", allocationSize=1 )
+	@TableGenerator(name="myGenerator", table="myidlist", pkColumnName = "keyname", pkColumnValue="video_user", valueColumnName = "keyid", allocationSize=1 )
 	@GeneratedValue(strategy = GenerationType.TABLE,generator="myGenerator") 
 	//主键
 	@Column(name = "id")
@@ -32,15 +32,12 @@ public class File_log implements Serializable {
 	//用户
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "user_id")
-	private User user; 
+	private User user;
 	
-	//创建時間
-	@Column(name = "date", length = 20)
-	private String date;
-	
-	//状态  1 草稿  2 发布
-	@Column(name= "file_num")
-	private Integer file_num = 0;
+	//视频
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "video_id")
+	private Video video;
 
 	public Integer getId() {
 		return id;
@@ -58,19 +55,11 @@ public class File_log implements Serializable {
 		this.user = user;
 	}
 
-	public Integer getFile_num() {
-		return file_num;
+	public Video getVideo() {
+		return video;
 	}
 
-	public void setFile_num(Integer file_num) {
-		this.file_num = file_num;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
+	public void setVideo(Video video) {
+		this.video = video;
 	}
 }

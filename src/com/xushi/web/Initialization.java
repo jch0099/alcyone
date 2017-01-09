@@ -3,10 +3,12 @@ package com.xushi.web;
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.ServletContextAware;
 
 import com.xushi.core.util.Global;
+import com.xushi.service.UserService;
 import com.xushi.util.system.Const;
 
 /**
@@ -20,7 +22,7 @@ import com.xushi.util.system.Const;
 public class Initialization implements ServletContextAware {
 	
 	ServletContext context;
-	//@Autowired UserService userService;
+	@Autowired UserService userService;
 
 	public void setServletContext(ServletContext context) {
 		this.context = context;
@@ -50,16 +52,6 @@ public class Initialization implements ServletContextAware {
 		// 网站根路径
 		String contextPath = context.getContextPath();
 		context.setAttribute(Const.CONTEXT_PATH, contextPath);
-		
-		//Oss路径
-		String ossPath = Global.OSSPath;
-		context.setAttribute(Const.OSS_PATH, ossPath);
-		
-		String ossImagePath = Global.OSSImagePath;
-		context.setAttribute(Const.OSS_IMAGE_PATH, ossImagePath);
-		
-		String ossStylename = Global.OSSStylename;
-		context.setAttribute(Const.OSS_STYLE_NAME, ossStylename);
 
 		// 上传路径
 		context.setAttribute(Const.CONTEXT_UPLOADPATH, Const.UPLOAD_URL_ROOT);
@@ -68,11 +60,11 @@ public class Initialization implements ServletContextAware {
 		String webPath = Global.WebPath + "/";
 		context.setAttribute(Const.CONTEXT_WEBPATH, webPath);
 		
-		// 平台根路径
+		/*// 平台根路径
 		String platformPath = contextPath + "/" + "platform";
-		context.setAttribute(Const.CONTEXT_PLATFORMPATH, platformPath);
+		context.setAttribute(Const.CONTEXT_PLATFORMPATH, platformPath);*/
 		
 		//初始管理员
-		//userService.initAdminuser();
+		userService.initAdminuser();
 	}
 }

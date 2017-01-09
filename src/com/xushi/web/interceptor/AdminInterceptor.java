@@ -20,9 +20,9 @@ import com.xushi.web.annotation.DataTypeAnnotation;
 import com.xushi.web.annotation.DataTypeEnum;
 import com.xushi.web.vo.ResultVo;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+public class AdminInterceptor extends HandlerInterceptorAdapter {
 	private Set<String> m_excludes;
-	private static final String PATH_A = "/platform";
+	private static final String PATH_A = "/admin";
 
 	private String[] m_suffixs = Const.RESOURCES;
 

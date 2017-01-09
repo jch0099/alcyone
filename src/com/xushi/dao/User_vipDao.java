@@ -6,16 +6,16 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.xushi.core.dao.BaseDaoWithQuery;
-import com.xushi.entity.File_group;
+import com.xushi.entity.Video_user;
 
 @Repository
-public class FileGroupDao extends BaseDaoWithQuery<File_group, Integer> {
+public class User_vipDao extends BaseDaoWithQuery<Video_user, Integer> {
 		
 	@PersistenceContext
 	EntityManager em;
 
-	protected FileGroupDao() {
-		super(File_group.class);
+	protected User_vipDao() {
+		super(Video_user.class);
 	}
 
 	@Override

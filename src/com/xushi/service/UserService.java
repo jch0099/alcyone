@@ -9,4 +9,6 @@ public interface UserService {
 	User getUserByAccount(String account);
 	
 	void saveUser(User user);
+	
+	void initAdminuser();
 }

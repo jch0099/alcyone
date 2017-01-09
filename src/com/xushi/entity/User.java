@@ -10,6 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+
+/**
+ * 用户
+ * @author penken
+ *
+ */
 @Entity
 @Table(name = "user")
 public class User implements Serializable{
@@ -33,16 +39,8 @@ public class User implements Serializable{
 	private Integer type = 2; //类型  1 管理员 2普通
 	
 	//创建日期
-	@Column(name = "create_date", length = 20)
-	private String create_date;
-
-	public String getCreate_date() {
-		return create_date;
-	}
-
-	public void setCreate_date(String create_date) {
-		this.create_date = create_date;
-	}
+	@Column(name = "create_time", length = 20)
+	private String create_time;
 
 	public Integer getId() {
 		return id;
@@ -74,5 +72,13 @@ public class User implements Serializable{
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	public String getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(String create_time) {
+		this.create_time = create_time;
 	}
 }
