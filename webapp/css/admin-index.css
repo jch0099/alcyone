@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*左侧菜单*/
+.sidebar-menu-index{
+	color:#6f6f6f;
+	border-right:none;
+	background-color:#f1f8f0;
+}
+.userInfo-index{
+	height:313px;
+	background-color:#e2e2e2;
+	border-bottom:1px solid #c8c8c8;
+}
+.userInfo-index h2{
+	font-size:16px;
+	line-height:16px;
+	padding:14px 0 10px;
+	font-weight:bold;
+	border-bottom:1px solid #c8c8c8;
+}
+.userInfo-pic-index{
+	width:170px;
+	height:170px;
+	margin:10px auto 12px;
+	border:1px solid #dad6ca;
+}
+.userInfo-desc-index li{
+	margin-bottom:12px;
+	line-height:14px;
+}
+.summary-index{
+	position:relative;
+	padding:5px 4px 0 2px;
+}
+.summary-index td{
+	line-height:34px;
+	border-bottom:1px solid #d6e0d5;
+	text-indent:0;
+}
+.sidebar-menu-index .divider{
+	width:1px;
+	background-color:#d6e0d5;
+	position:absolute;
+	left:115px;
+	top:314px;
+	bottom:0;
+}
+/* 主内容 */
+.total-group-index > li{
+	width:250px;
+	height:140px;
+	float:left;
+	margin:18px 21px 0 0;
+	color:#fff;
+}
+.total-group-order{
+	background-image:url(../images/worder_bg.png);
+}
+.total-group-dispatch{
+	background-image:url(../images/dispatch_bg.png);
+}
+.total-group-complain{
+	background-image:url(../images/complain_bg.png);
+	margin-right:0;
+}
+.total-group-index .total-group-take{
+	width:139px;
+	background-image:url(../images/torder_bg.png);
+}
+.total-group-index h2{
+	padding:16px 0 0 14px;
+	font-size:30px;
+}
+.total-group-index hr{
+	margin:13px 0 0 10px;
+	width:64%;
+}
+.total-group-desc{
+	margin:17px 0 0 10px;
+	font-size:16px;
+}
+.total-group-desc p{
+	display:inline-block;
+}
+.total-group-desc span{
+	display:block;
+	width:100%;
+}
+.waitList{
+	margin-top:22px;
+	color:#5a5a5a;
+	border-color:#dddddd;
+}
+.waitList th,.waitList td{
+	padding:0;
+}
+.waitList th{
+	line-height:38px;
+	background-color:#f1f8f0;
+	text-align:center;
+}
+.waitList td{
+	text-indent:10px;
+	line-height:34px;
+}
+.waitList_detail{
+	width:100%;
+}
+.waitList_detail td{
+	border:none;
+	border-right:1px solid #dddddd;
+	border-bottom:1px solid #dddddd;
+}

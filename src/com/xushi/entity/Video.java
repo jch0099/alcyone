@@ -27,11 +27,15 @@ public class Video implements Serializable {
 	private Integer id; 
 	
 	//标题
-	@Column(name = "title", length = 20)
+	@Column(name = "title", length = 200)
 	private String title;
 	
+	//视频图片
+	@Column(name = "img", length = 200)
+	private String img;
+	
 	//视频url
-	@Column(name = "url", length = 255)
+	@Column(name = "url", length = 2000)
 	private String url;
 	
 	//说明
@@ -140,6 +144,14 @@ public class Video implements Serializable {
 
 	public void setUpdate_time(String update_time) {
 		this.update_time = update_time;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 }

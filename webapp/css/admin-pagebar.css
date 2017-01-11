@@ -1,0 +1,11 @@
+
+/* 分页 */
+.pager>li>a{
+	background-color:#d0d0d0;
+	border:none;
+	margin-left:1px;
+	color:#fff;
+}
+.pager>li>a:hover,.pager>li.active>a{
+	background-color:#71a43d
+}

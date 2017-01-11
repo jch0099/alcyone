@@ -1,0 +1,70 @@
+.content{
+	margin-top:80px;
+	/*height: 300px;
+	width: 100%; */
+	background-color: #303332;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+.content .nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.content .video-box {
+	width: 100%;
+	height: 400px;
+}
+.content .video-box .video-left{
+	float: left;
+	width: 60%;
+}
+.content .video-box .video-right{
+	float: left;
+	width: 40%;
+}
+.content .video-box .info{
+	padding-left: 10px;
+}
+.content .video-box .video-right .title{
+	color: #f2f2f2;
+}
+.content .video-box .video-right .see{
+	margin-top: 40px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+.content .video-box .video-right .see span{
+    margin-left: 5px;
+}
+.content .video-box .video-right .price_free{
+	margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.content .video-box .video-right .share{
+	margin-top: 10px;
+	margin-left: 10px;
+    font-size: 18px;
+    float: left;
+}
+.content .video-box .video-right > .btns > .btn-success{
+	float: left;
+}
+.video-info{
+	color: #f2f2f2;
+	height: 800px;
+	padding-left: 50px;
+	padding-right: 300px;
+}
+.video-info .title {
+	margin-top: 20px;
+    background-color: #fff;
+    padding-left: 20px;
+    color: #333;
+    line-height: 60px;
+    border-bottom: #eee solid 1px;
+    font-size: 16px;
+}
+.video-info .summary {
+	color: #000;
+}

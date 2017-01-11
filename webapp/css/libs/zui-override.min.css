@@ -1,0 +1,14 @@
+body{font-family:"Microsoft YaHei",Arial;font-size:12px}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
+ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}
+abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%}
+legend{color:#000}.form-control{width:auto}.breadcrumb{margin:0 !important}.dropdown-menu,.label,.btn,.btn-sm,.btn-xs,.btn-mini{font-size:12px}::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track-piece{background-color:#ccc;-webkit-border-radius:6px}
+::-webkit-scrollbar-thumb:vertical{height:5px;background-color:#999;-webkit-border-radius:6px}::-webkit-scrollbar-thumb:horizontal{width:5px;background-color:#ccc;-webkit-border-radius:6px}
+
+.input-group .form-control{width: auto;}.form-horizontal .form-group {margin-left: 0;margin-right: 0px;}.breadcrumb{padding:0;}.breadcrumb>li+li:before {
+padding: 0 5px;color: #bbbbbb;font-family: ZenIcon;content: "\e6e1";}.breadcrumb>.active{color:#737373;}.dropdown-menu{min-width:0;}
+
+.modal-backdrop.in {background-color: #fff;filter: alpha(opacity=20);opacity: 0.2;}
+.modal-dialog {margin: 30px auto;}
+.btn-primary,.btn-primary:hover{ background-color: #73A33D; border-color: #229F24;}
+.chosen-container .chosen-results{max-height: 150px;}

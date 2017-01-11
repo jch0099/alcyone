@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 主内容 */
+.cataWrap-first{
+	border-bottom:2px solid #d0d0d0;
+}
+.classList{
+	padding-top:25px;
+}
+.classList li{
+	width:151px;
+	padding-right:3px;
+	line-height:26px;
+	text-align:center;
+	float:left;
+}
+.classList li:after{
+	position: absolute;
+	top: 0;
+	right: 0;
+	line-height:23px;
+	font-size:12px;
+	color: #d0d0d0;
+	content: "\|";
+}
+.classList li a{
+	padding:0;
+	color:#5a5a5a;
+	margin-bottom:-2px;
+}
+.classList li a span{
+	color:#f00;
+	font-weight:bold;
+	margin-left:3px;
+}
+.classList li a:hover{
+	color:#5a5a5a;
+}
+.classList li.active a{
+	color:#5da216;
+	border-bottom:3px solid #5da216;
+}
+.cataWrap-first .btn-add{
+	width:80px;
+	height:32px;
+	line-height:32px;
+	background-color:#f08300;
+	color:#fff;
+	margin-top:16px;
+}
+.cataTable{
+	margin-top:4px;
+}
+.cataTable td{
+	padding:4px 0;
+	color:#75767f;
+	line-height:20px;
+}
+.cataTable td a{
+	display:inline-block;
+	padding:0 10px;
+	line-height:20px;
+	text-align:center;
+	color:#75767f;
+	margin-right:25px;
+}
+.cataTable td a.active{
+	background-color:#85bc4d;
+	color:#fff;
+}
+.table-detailList{
+	margin-top:12px;
+	border:1px solid #ddd;
+	border-bottom:none;
+}
+.table-detailList td,.table-detailList th{
+	padding:0;
+	color:#5a5a5a;
+	text-align:center;
+	font-size:14px;
+}
+.table-detailList th{
+	line-height:38px;
+	background-color:#f1f8f0;
+	border-right:1px solid #ddd;
+}
+.table-detailList td{
+	vertical-align:middle;
+	padding:8px 0 8px 8px;
+}
+.table-detailList td img{
+	border:1px solid #ddd;
+}
+.table-detailList>tbody>tr:nth-child(odd)>td{
+	background-color:#fff;
+}
+.table-detailList>tbody>tr:nth-child(even)>td{
+	background-color:#f8f8f8;
+}
+.detailList-btn a{
+	display:block;
+	float:left;
+	width:25px;
+	height:25px;
+	padding:0;
+	border:none;
+	margin-left:10px;
+}
+.btn-edit{
+	background-image:url(../images/ico_edit.png);
+}
+.btn-del{
+	background-image:url(../images/ico_del.png);
+}
+
+.pager{
+	margin-top:0;
+}
+
+/* 订单管理 */
+.table-secondList{
+	margin:0;
+}
+.secondList-header input{
+	margin-right:15px;
+}
+.table-secondList>tbody>tr:nth-child(odd)>td{
+	background-color:#f2f2f2;
+}
+.table-secondList td{
+	border-right:1px solid #ddd;
+}
+.secondList-header td{
+	color:#999;
+	font-family:"华文细黑";
+	border-right:none;
+}
+.table-secondList td:last-child{
+	border-right:none;
+}
+/* 搜索按钮 */
+.search-btn{
+	padding: 2px 12px;
+	vertical-align: baseline;
+	background-color: #73a33d;
+}
+
+.search-btn:before{
+	font-family: ZenIcon;
+	font-size: 18px;
+	color: #fff;
+	content: "\e603";
+	-webkit-transition: all .5s cubic-bezier(.175,.885,.32,1);
+	-o-transition: all .5s cubic-bezier(.175,.885,.32,1);
+	transition: all .5s cubic-bezier(.175,.885,.32,1);
+}
+
+.icon-exclamation-sign,
+.icon-user,
+.icon-map-marker,
+.icon-ok-circle{
+	color:#73a33d;
+}
+.detailList-btn .icon{
+	color:#73a33d;
+	font-size: 24px;
+}
+.detailList-btn .disable{
+	color:#999;
+}

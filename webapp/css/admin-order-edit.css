@@ -1,0 +1,87 @@
+
+      .tab-wrap{
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+      }
+      ul.nav-tabs{
+        border: none;
+      }
+      .nav-tabs>li{
+        outline: none;
+      }
+      .nav-tabs>li>a{
+        border-radius: 0px;
+        margin: 0;
+        outline: none;
+        border-left: 0;
+        border-right:1px solid #ddd;
+        border-bottom:1px solid #ddd;
+        border-top: 3px solid #f2f2f2;
+        background-color: #f2f2f2;
+        font-weight: 700;
+        font-size: 14px;
+        padding-left: 40px;
+        padding-right: 40px;
+
+      }
+      .nav-tabs>li.active>a,
+      .nav-tabs>li.active>a:hover,
+      .nav-tabs>li.active>a:focus{
+        color: #5da216;
+        background-color: #fff;
+        border-left: 0;
+        border-right:1px solid #ddd;
+        border-bottom:1px solid #ddd;
+        border-top: 3px solid #8dc752;
+      }
+
+      .nav-tabs>li>a,
+      .nav-tabs>li>a:hover{
+        color: #5a5a5a;
+      }
+      .item-wrap{
+        width: 100%;
+        background-color: #f2f2f2;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .tab-content{
+        font-size: 14px;
+      }
+      .edit-input {
+        height: 31px;
+        border: 1px solid #d0d0d0;
+        padding: 10px 8px;
+      }
+      .edit-l-input{
+        width: 417px;        
+      }
+      .edit-m-input{
+        width: 167px;
+      }
+      .edit-s-input{
+        width: 105px;
+      }
+
+      .item-label,
+      .edit-input-wrap,
+      .item-alert-msg{
+        float: left;
+      }
+      .item-label{
+        width: 155px;
+        padding-right: 5px;
+        padding-top: 5px!important;
+        color: #75767f;
+      }
+      .item-alert-msg{
+        display: block;
+        padding: 5px 8px;
+        height: 31px;
+        color: #a7a7a7;
+      }
+      .c353535{
+        color: #353535;
+      }

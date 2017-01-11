@@ -1,0 +1,24 @@
+.header .logo{
+	margin-left: 100px;
+}
+.logo img{
+	max-height: 100px !important;
+}
+.header .btn-login{
+	margin-top:15px;
+	float: right;
+}
+.header .signup-loader{
+	margin-top:22px;
+}
+header.header .brand{
+	height: 70px !important;
+}
+section.container{
+	margin-top: 100px;
+	text-align: center;
+}
+.thumb{
+	width: 206px;
+	height: 113px;
+}

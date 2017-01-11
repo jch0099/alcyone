@@ -30,6 +30,10 @@ public class Pay_config  implements Serializable{
 	@Column(name = "type")
 	private Integer type;
 	
+	//类型  2两个月,3一季,4半年,5一年,6任意(每月的价钱)
+	@Column(name = "name",length=10)
+	private String name;
+	
 	//价格
 	@Column(name = "amount")
 	private Float amount;
@@ -56,5 +60,13 @@ public class Pay_config  implements Serializable{
 
 	public void setAmount(Float amount) {
 		this.amount = amount;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

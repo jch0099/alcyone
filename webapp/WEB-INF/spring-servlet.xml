@@ -25,18 +25,16 @@
 	<mvc:resources location="/fonts/" mapping="/fonts/**" />
 	<mvc:resources location="/images/" mapping="/images/**" />
 	<mvc:resources location="/uploads/" mapping="/uploads/**" />
-	<mvc:resources location="/qrcode/" mapping="/qrcode/**" />
 	<!-- 拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/platform/**" />
-			<bean class="com.xushi.web.interceptor.LoginInterceptor">
+			<mvc:mapping path="/admin/**" />
+			<bean class="com.xushi.web.interceptor.AdminInterceptor">
 				<property name="excludes">
 					<set>
-						<value>/platform/index</value>
-						<value>/platform/login</value>	
-						<value>/platform/edit</value>
-						<value>/platform/ajax_edit</value>
+						<value>/admin/login</value>
+						<value>/admin/ajax_login</value>
+						<value>/admin/verifyimage</value>
 					</set>
 				</property>
 			</bean>

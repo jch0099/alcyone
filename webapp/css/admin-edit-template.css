@@ -1,0 +1,83 @@
+input,
+button,
+select,
+textarea{outline:none}
+/**
+ * 主要信息展示部分样式
+ */
+.main-contentWrap{
+	/*padding-top: 20px;
+	padding-bottom: 1px;*/
+	color: #75767f;
+}
+.main-contentWrap td{
+	border: none;
+}
+.table-item{
+	text-align: right;
+	vertical-align: middle!important;
+}
+.table tr>td.active,
+.table tr>th.active,
+.table tr.active>td, 
+.table tr.active>th {
+ 	background-color: #f2f2f2; 
+}
+.table-input{
+	border: 1px solid #ddd;
+	background-color: #fff;
+	padding: 5px 10px;
+}
+.table-select{
+	padding: 2.5px;
+	border: 1px solid #ddd;
+	height: 32px;
+}
+
+.chosen-select{
+	visibility: hidden;
+	height: 32px;
+}
+.table-textarea{
+	min-width:300px;
+	min-height: 150px;
+	padding: 10px;
+	resize:none;
+	border: 1px solid #ddd;
+}
+
+.table{
+	/*background-color: #f2f2f2;*/
+	margin: 0;
+}
+
+/*客户数据采集页面的列表样式覆盖*/
+.table-detailList td{
+	border-bottom: 1px solid #ddd!important;
+}
+
+/*会员弹出框*/
+.frameWrap{
+	position:fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+}
+.frameWrap-lays{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	opacity: 0.4;
+}
+.frameWrap-ctn{
+	position: absolute;
+	left: 50%;
+	top: 60px;
+	margin-left: -275px;
+}
+

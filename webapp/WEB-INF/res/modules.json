@@ -1,0 +1,61 @@
+{
+   "item" : [
+   {
+         "code" : "01",
+         "item" : [
+            {
+               "code" : "0101",
+               "icon" : "",
+               "item" : [
+                  {
+                     "code" : "010101",
+                     "title" : "视频管理",
+                     "url" : "admin/video/list"
+                  }
+               ],
+               "title" : "视频管理"
+            }
+         ],
+         "title" : "视频管理",
+         "url" : "admin/video/list"
+  	},
+   	{
+         "code" : "02",
+         "item" : [
+            {
+               "code" : "0201",
+               "icon" : "",
+               "title": "广告设定",
+               "item" : [
+                  {
+                     "code" : "020101",
+                     "title" : "广告设定",
+                     "url" : "admin/advertisement/list"
+                  }
+               ]
+            }
+         ],
+         "title" : "广告设定",
+         "url" : "admin/advertisement/list"
+     },
+   	 {
+         "code" : "03",
+         "item" : [
+            {
+               "code" : "0301",
+               "icon" : "",
+               "title": "付费设定",
+               "item" : [
+                  {
+                     "code" : "030101",
+                     "title" : "付费设定",
+                     "url" : "admin/pay_config/list"
+                  }
+               ]
+            }
+         ],
+         "title" : "付费设定",
+         "url" : "admin/pay_config/list"
+     }
+   ]
+}

@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+
+.calendar{
+	width:447px;
+}
+.about-table td{
+	height:57px;
+}
+.about-table th,.about-table td{
+	vertical-align:middle;
+	text-align:center;
+}
+.about-table-bth th{
+	height:43px;
+}
+.about-table-sth th{
+	color:#6a7883;
+	width:14%;
+	height:40px;
+	background-color:#d4e6f4;
+}
+.calendar-btn{
+	cursor:pointer;
+	margin-top:5px;
+}
+.calendar-btn i{
+	color:#81cdf0;
+	font-size:20px;
+	vertical-align:text-bottom;
+}
+.calendar-select{
+	margin-left:117px;
+}
+.calendar-select input{
+	border:none;
+	width:78px;
+	margin-top:5px;
+}
+.calendar-select input,.calendar-select span{
+	display:block;
+	float:left;
+}
+.calendar-select span{
+	cursor:pointer;
+}
+.calendar-day{
+	position:relative;
+	width:100%;
+	height:56px;
+	overflow:hidden;
+}
+.calendar-day span{
+	display:block;
+	line-height:1em;
+}
+.calendar-day-number{
+	font-family:'黑体';
+	font-size:26px;
+	color:#6a7883;
+	margin-top:8px;
+}
+.calendar-day .nocurrent{
+	color:#bdc5cb;
+}
+.calendar-day-count{
+	font-size:14px;
+	color:#bebebe;
+}
+.calendar-day-icon{
+	position:absolute;
+	bottom:0;
+	right:0;
+	width:16px;
+	height:16px;
+}
+.calendar .actived{
+	border:2px solid #f08300;
+}
+.calendar .today{
+	border:2px solid #71a43d;
+}
+.js-datepicker{
+	width:25px;
+	height:27px;
+	background-image:url(../../../images/calendar_icon.png);
+}

@@ -1,0 +1,28 @@
+.comm_overlay{
+	position:fixed;
+	_position: absolute;
+	display: none;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index:10000;
+	-moz-opacity: 0;
+	opacity:0;
+	filter: alpha(opacity=0);
+}
+.comm_loading,
+.comm_msgBox {
+	position:fixed;
+	_position: absolute;
+	display: none;
+	top: 50%;
+	left: 50%;
+	cursor: default;
+	overflow: hidden;
+	z-index: 10010;
+	color: #fff;
+	background-color:#333;
+	padding: 15px 30px 15px 30px;
+}
