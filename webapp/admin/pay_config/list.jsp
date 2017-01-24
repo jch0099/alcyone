@@ -22,13 +22,18 @@
      <!-- 主内容 -->
     <div class="main-container" id="mainContainer">
        <form id="searchForm" role="_searchForm" action="list" method="post">
-          <input id="pageno" name="pageno" type="hidden" value="${page.pageno}">
+       	 <p style="font-size: 30px;color: red; text-align: center;">收费价格为总共的价格，并且时长只能是整数。</p>	
+         <input id="pageno" name="pageno" type="hidden" value="${page.pageno}">
          <div class="containerWrap center-block">
+         	<!-- 搜索栏 -->
+           <div class="cm-f14 cm-pdt10 cm-tar cm-overflow">
+           	 <a href="edit" title="新增" class="pull-right cm-btn-confirm-bg cm-btn-default" target="_box">新增</a>
+           </div>
            <!-- 列表 -->
            <table class="table table-striped table-detailList">
              <thead>
                 <tr>
-                   <th width="20%">类型值</th>
+                   <th width="20%">时长</th>
                    <th width="20%">类型名称</th>
                    <th width="20%">类型价格</th>
                    <th style="border-right:none;">操作</th>
@@ -37,11 +42,12 @@
              <tbody>
              <c:forEach var="result" items="${page.results }">
 	            <tr>
-	              <td>${result.type }</td>
+	              <td>${result.month_length }</td>
 	              <td>${result.name }</td>
 	              <td>${result.amount }</td>
 	              <td class="detailList-btn">
 	                <a href="edit?id=${result.id }" title="編輯" class="pull-left icon-edit icon" target="_box"></a>
+	                <a href="javascript:void(0)" title="刪除" data-id="${result.id }" data-url="ajax_delete" class="pull-left icon-remove icon" role="_deleteOp" ></a>
 	              </td>
 	            </tr>
              </c:forEach>

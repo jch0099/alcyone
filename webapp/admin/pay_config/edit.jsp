@@ -14,7 +14,6 @@
         <c:if test="${item.id > 0 }">
        		<input id="" name="id" type="hidden" value="${item.id }"/>
        		<input id="" name="type" type="hidden" value="${item.type }"/>
-       		<input id="" name="name" type="hidden" value="${item.name }"/>
         </c:if>
         <div class="main-contentWrap cm-f14">
           <table class="table">
@@ -22,13 +21,19 @@
             	<tr>
                 <td class="col-xs-2 table-item"></td>
                 <td class="col-xs-8">
-                  <label class="cm-required">若付费类型为'任意'时 收费价格为每月的价格</label>
+                  <label class="cm-required">收费价格为总共的价格，并且时长只能是整数。</label>
                 </td>
               </tr>
-            	<tr>
-                <td class="col-xs-2 table-item">类型名称：</td>
+           		<tr>
+                <td class="col-xs-2 table-item"><label class="cm-required">*</label>名字:</td>
                 <td class="col-xs-8">
-                  <label>${item.name }</label>
+                  <input type="text" class="table-input cm-w200 {required:true,maxlength:10}" name="name" id="" value="${item.name }"/>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-xs-2 table-item">时长：</td>
+                <td class="col-xs-8">
+                  <input type="text" class="table-input cm-w200 {number:true}" name="month_length" id="" value="${item.month_length }"/>
                 </td>
               </tr>
               <tr>

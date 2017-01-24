@@ -15,10 +15,60 @@ header.header .brand{
 	height: 70px !important;
 }
 section.container{
-	margin-top: 100px;
 	text-align: center;
 }
 .thumb{
 	width: 206px;
 	height: 113px;
+}
+.index-ad{
+	margin-top: 100px;
+	/* height: 350px; */
+	width: 100%;
+	display: table;
+	text-align: center;
+}
+.index-ad .ad{
+	height: 150px;
+	width: 18%;
+	text-align: center;
+	float: left;
+	margin-left: 2%;
+	margin-top: 20px;
+}
+.index-ad .ad img{
+	height: 150px;
+}
+.footer .friend{
+	text-align: left;
+	font-size: 15px;
+}
+.footer .friend .links{
+	padding: 20px;
+	font-size: 12px;
+}
+.footer .friend .links a{
+	margin-left: 20px;
+}
+.header .user-info {
+	position:absolute;
+	right: 120px;
+	text-align: center;
+}
+.header .user-info ul {
+	/* border: 1px solid; */
+	box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+	width: 150px;
+	font-size: 14px;
+	background: #fff;
+	text-align: center;
+	margin-left: -50px;
+}
+.header .user-info ul .info{
+	border-bottom: #ddd solid 1px;
+	padding: 10px;
+}
+.header .user-info ul li{
+	margin-top: 10px;
+	margin-bottom: 2px;
 }

@@ -34,11 +34,11 @@ public class Order implements Serializable {
 	@Column(name = "order_num", length = 255)
 	private String order_num;
 	
-	//类型  1 购买单个视频 2购买用户vip
+	//类型  1 购买单个视频 2购买用户vip 3打赏
 	@Column(name = "type")
 	private Integer type;
 	
-	//用户购买视频id,type为1时
+	//用户购买视频id,type为1/3时
 	@Column(name = "video_id")
 	private Integer video_id;
 	

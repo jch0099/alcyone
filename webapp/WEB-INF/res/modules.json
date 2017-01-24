@@ -31,6 +31,11 @@
                      "code" : "020101",
                      "title" : "广告设定",
                      "url" : "admin/advertisement/list"
+                  },
+                  {
+                     "code" : "020102",
+                     "title" : "友情链接",
+                     "url" : "admin/friend_link/list"
                   }
                ]
             }
@@ -56,6 +61,25 @@
          ],
          "title" : "付费设定",
          "url" : "admin/pay_config/list"
+     },
+   	 {
+         "code" : "04",
+         "item" : [
+            {
+               "code" : "0401",
+               "icon" : "",
+               "title": "图片管理",
+               "item" : [
+                  {
+                     "code" : "040101",
+                     "title" : "图片管理",
+                     "url" : "admin/image/list"
+                  }
+               ]
+            }
+         ],
+         "title" : "图片管理",
+         "url" : "admin/image/list"
      }
    ]
 }

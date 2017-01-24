@@ -1,5 +1,7 @@
 package com.xushi.admin.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,10 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.xushi.core.controller.BaseController;
 import com.xushi.core.page.Page;
 import com.xushi.core.page.PageRequest;
+import com.xushi.entity.Image;
 import com.xushi.entity.Video;
+import com.xushi.service.ImageService;
 import com.xushi.service.VideoService;
 import com.xushi.util.gson.JsonUtil;
 import com.xushi.web.annotation.DataTypeAnnotation;
@@ -23,6 +29,7 @@ import com.xushi.web.vo.ResultVo;
 public class AdminVideoController extends BaseController{
 	
 	@Autowired VideoService videoService;
+	@Autowired ImageService imageService;
 	
 	@RequestMapping("/list")
 	public void list(String keyword,Integer is_free,Integer pageno,HttpServletRequest request){
@@ -36,6 +43,20 @@ public class AdminVideoController extends BaseController{
 		if( null != id ) {
 			Video video = videoService.getVideo(id);
 			request.setAttribute("item", video);
+			
+			List<Image> list = imageService.findImage(1);
+			JsonArray outarr = new JsonArray();
+			if(null != list){
+				for (Image image : list) {
+					JsonObject jo = new JsonObject();
+					jo.addProperty("id", image.getId());
+					jo.addProperty("pId", 0);
+					jo.addProperty("name", image.getTitle());
+					jo.addProperty("img", image.getImg());
+					outarr.add(jo);
+				}
+			}
+			request.setAttribute("zNodes", outarr.toString());
 		}
 	}
 	

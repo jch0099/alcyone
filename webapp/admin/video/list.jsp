@@ -34,18 +34,19 @@
           		</c:forEach>
           	</select> --%>
            	 <a href="javascript:void(0);" id="search-btn" role="_searchBtn" class="cm-btn-default search-btn cm-mr25" >搜索</a>
-           	 <a href="edit" title="新增帳戶" class="pull-right cm-btn-confirm-bg cm-btn-default" target="_box">新增视频</a>
+           	 <a href="edit" title="新增视频" class="pull-right cm-btn-confirm-bg cm-btn-default" target="_box">新增视频</a>
            </div>
            <!-- 列表 -->
            <table class="table table-striped table-detailList">
              <thead>
                 <tr>
-                   <th width="10%">视频id</th>
+                   <th width="5%">视频id</th>
                    <th width="15%">标题</th>
-                   <th width="15%">免费状态</th>
-                   <th width="15%">视频价格</th>
+                   <th width="8%">免费状态</th>
+                   <th width="10%">视频价格</th>
+                   <th width="10%">视频封面</th>
                    <th width="10%">视频链接</th>
-                   <th width="10%">视频状态</th>
+                   <th width="5%">视频状态</th>
                    <th width="15%">更新時間</th>
                    <th style="border-right:none;">操作</th>
                 </tr>
@@ -57,6 +58,7 @@
 	              <td>${result.title }</td>
 	              <td>${result.is_free==1?"免费":"付费" }</td>
 	              <td>${result.amount }</td>
+	              <td><c:if test="${!empty result.img }"> <img alt="" src="${result.img }"> </c:if></td>
 	              <td>${result.url} </td>
 	              <td>
           				<c:if test="${result.status == 2 }">

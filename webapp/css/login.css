@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 body{
-	background: url(../images/background.png) repeat scroll 50% 50% #000000;
+	background: url(../images/background.jpg) repeat scroll 50% 50% #000000;
 }
 .login_form{
 	height: 390px;
@@ -38,7 +38,7 @@ body{
 	font-family: Georgia,"Times New Roman",Times,serif;
     font-size: 18px;
 	font-style:italic;
-	padding: 10px 20px;
+	padding: 10px 20px; 
     text-shadow: 1px 1px 0 #EEEEEE;
 	background: none repeat scroll 0 0 #E7E5C8 !important;
 	background-color: #A2AAAA;
@@ -60,7 +60,7 @@ fieldset{
 	border:0;
 }
 .control_group{
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	position:relative;
 }
 .control_label{
@@ -132,7 +132,7 @@ input[type="text"],input[type="password"]{
 }
 .submit {
 	position:absolute;
-	bottom:43px;
+	bottom:2px;
 	right:30px;
     font-size: 15px;
     line-height: 15px;

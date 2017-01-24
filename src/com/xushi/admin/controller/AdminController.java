@@ -2,11 +2,9 @@ package com.xushi.admin.controller;
 
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +16,9 @@ import com.google.gson.JsonObject;
 import com.xushi.core.controller.BaseController;
 import com.xushi.entity.User;
 import com.xushi.service.UserService;
-import com.xushi.util.StringUtil;
 import com.xushi.util.UserSessionUtil;
-import com.xushi.util.VerifyImage;
 import com.xushi.util.gson.JsonUtil;
 import com.xushi.util.security.MD5MixUtil;
-import com.xushi.util.system.Const;
 import com.xushi.util.system.PlatformMenuUtil;
 import com.xushi.web.annotation.DataTypeAnnotation;
 import com.xushi.web.annotation.DataTypeEnum;
@@ -50,52 +45,33 @@ public class AdminController extends BaseController {
 	 */
 	@RequestMapping("/ajax_login") 
 	@DataTypeAnnotation(DataTypeEnum.json)
-	public void ajaxLogin(String account, String pwd, String checkcode, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void ajaxLogin(String account, String pwd, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ResultVo resultVo = new ResultVo();
-		
 		try {
 			User user = userService.getUserByAccount(account);
-		
-			if(null != checkcode && checkcode.equals(UserSessionUtil.getRandCode(request))){
-				if (null != user && user.getPassword().equals(MD5MixUtil.md5Mix(pwd))&& 1 == user.getType()) {
-					
-					JsonObject menu = PlatformMenuUtil.getMenu(user, request);//得到第一个菜单url
-					JsonArray ja = menu.get("item").getAsJsonArray();
-					String url = "";
-					if(null != ja && ja.size() > 0){
-						JsonElement je = ja.get(0);
-						JsonObject cmenu1 = je.getAsJsonObject();
-						JsonArray menus2 = cmenu1.get("item").getAsJsonArray();
-						if(null != menus2 && menus2.size() > 0){
-							JsonElement cje2 = menus2.get(0);
-							JsonObject cmenu2 = cje2.getAsJsonObject();
-							JsonArray menus3 = cmenu2.get("item").getAsJsonArray();
-							if(null != menus3 && menus3.size() > 0){
-								JsonElement cje3 = menus3.get(0);
-								JsonObject cmenu3 = cje3.getAsJsonObject();
-								url = cmenu3.get("url").getAsString();
-							}
+			if (null != user && user.getPassword().equals(MD5MixUtil.md5Mix(pwd))&& 1 == user.getType()) {
+				JsonObject menu = PlatformMenuUtil.getMenu(user, request);//得到第一个菜单url
+				JsonArray ja = menu.get("item").getAsJsonArray();
+				String url = "";
+				if(null != ja && ja.size() > 0){
+					JsonElement je = ja.get(0);
+					JsonObject cmenu1 = je.getAsJsonObject();
+					JsonArray menus2 = cmenu1.get("item").getAsJsonArray();
+					if(null != menus2 && menus2.size() > 0){
+						JsonElement cje2 = menus2.get(0);
+						JsonObject cmenu2 = cje2.getAsJsonObject();
+						JsonArray menus3 = cmenu2.get("item").getAsJsonArray();
+						if(null != menus3 && menus3.size() > 0){
+							JsonElement cje3 = menus3.get(0);
+							JsonObject cmenu3 = cje3.getAsJsonObject();
+							url = cmenu3.get("url").getAsString();
 						}
 					}
-					
-					if(StringUtil.isEmpty(url)){
-						resultVo = new ResultVo(false,"用戶沒有任何相應權限");
-					}else{
-						resultVo = new ResultVo(true,url);
-						UserSessionUtil.setAdminUser(user, request);
-					}
-				
-				}else{
-					VerifyImage image = new VerifyImage();
-					image.creatImage();
-					UserSessionUtil.setRandCode(checkcode, request);
-					resultVo = new ResultVo(false,"用戶名密碼錯誤");
 				}
+				resultVo = new ResultVo(true,url);
+				UserSessionUtil.setAdminUser(user, request);
 			}else{
-				VerifyImage image = new VerifyImage();
-				image.creatImage();
-				UserSessionUtil.setRandCode(checkcode, request);
-				resultVo = new ResultVo(false,"驗證碼錯誤");
+				resultVo = new ResultVo(false,"用戶名密碼錯誤");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -143,7 +119,7 @@ public class AdminController extends BaseController {
 	}
 	/**
 	 * 验证码
-	 */
+	
 	@RequestMapping("verifyimage")
 	public void verifyimage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
@@ -157,7 +133,7 @@ public class AdminController extends BaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	} */
 	
 	/**
 	 * 菜单

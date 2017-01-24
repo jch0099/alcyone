@@ -1,6 +1,7 @@
 package com.xushi.video.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,11 +16,15 @@ import com.xushi.core.dao.DaoException;
 import com.xushi.core.page.Page;
 import com.xushi.core.page.PageRequest;
 import com.xushi.core.page.Sort;
-import com.xushi.core.util.Global;
+import com.xushi.entity.Advertisement;
+import com.xushi.entity.Friend_link;
 import com.xushi.entity.User;
 import com.xushi.entity.Video;
+import com.xushi.service.AdvertisementService;
+import com.xushi.service.Friend_linkService;
 import com.xushi.service.UserService;
 import com.xushi.service.VideoService;
+import com.xushi.util.NumberUtil;
 import com.xushi.util.StringUtil;
 import com.xushi.util.UserSessionUtil;
 import com.xushi.util.gson.JsonUtil;
@@ -39,33 +44,66 @@ public class VideoController extends BaseController {
 	
 	@Autowired VideoService videoService;
 	@Autowired UserService userService;
+	@Autowired AdvertisementService adService;
 	
 	/**    视频      **/
 	@RequestMapping("/index")
-	public void index(Integer pageno,String sortstr, HttpServletRequest request){
-		PageRequest pr = new PageRequest(pageno, 10);
-		Sort sort = new Sort(false, "update_time");
-		if( !StringUtil.isEmpty(sortstr) ) {
-			sort = new Sort(false, sortstr,"update_time");
+	public void index(Integer pageno,Integer sorttype, HttpServletRequest request){
+		try {
+			List<Advertisement> ads = adService.findAdvertisement(1, 1);
+			request.setAttribute("ads", ads);
+			
+			PageRequest pr = new PageRequest(pageno, 30);
+			Sort sort = new Sort(false, "update_time");
+			if( NumberUtil.toInt(sorttype) == 1 ) {
+				sort = new Sort(false, "read_num","update_time");
+			}
+			pr.setSort(sort);
+			Page<Video> page = videoService.findVideoPage(null, null, pr);
+			/*List<Video> list = page.getResults();
+			if( null != list ) for (Video video : list) {
+				//String img = StringUtil.toString(video.getImg());
+				//if( !img.startsWith("http") ) video.setImg(Global.WebPath+"images/404pic.png");
+				//if( !img.startsWith("http") ) video.setImg(Global.WebPath+"uploads/"+video.getImg());
+			}*/
+			request.setAttribute("page", page);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		pr.setSort(sort);
-		Page<Video> page = videoService.findVideoPage(null, null, pr);
-		List<Video> list = page.getResults();
-		if( null != list ) for (Video video : list) {
-			String img = StringUtil.toString(video.getImg());
-			if( !img.startsWith("http") ) video.setImg(Global.WebPath+"images/404pic.png");
-		}
-		request.setAttribute("page", page);
 	}
 	@RequestMapping("/play")
-	public void index(Integer id, HttpServletRequest request){
-		System.out.println(id);
+	public String index(Integer id, HttpServletRequest request){
+		try {
+			List<Advertisement> ads = adService.findAdvertisement(2, 1);
+			List<Advertisement> adtop = new ArrayList<Advertisement>();
+			List<Advertisement> adbottom = new ArrayList<Advertisement>();
+			if( null != ads ) for (int i = 0; i < ads.size(); i++) {
+				Advertisement ad = ads.get(i);
+				if( i <= ads.size()/2 ) adtop.add(ad);
+				else adbottom.add(ad);
+			}
+			request.setAttribute("adtop", adtop);
+			request.setAttribute("adbottom", adbottom);
+			
+			User user = UserSessionUtil.getVideoUser(request);
+			if( null != id ) {
+				Video video = videoService.getVideo(id);
+				boolean c = videoService.checkVideo(user,video);
+				video.setRead_num(NumberUtil.toInt(video.getRead_num())+1);
+				videoService.saveVideo(video);
+				if( !c ) video.setUrl("");
+				request.setAttribute("video", video);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/video/play";
 	}
 	/**    视频      **/
 	/**    用户      **/
 	@RequestMapping("/reg")
 	public void reg(HttpServletRequest request){
-		
 	}
 	@RequestMapping("/ajax_reg")
 	@DataTypeAnnotation(DataTypeEnum.json)
@@ -90,7 +128,6 @@ public class VideoController extends BaseController {
 	
 	@RequestMapping("/login")
 	public void login(HttpServletRequest request){
-		
 	}
 	@RequestMapping("/ajax_login")
 	@DataTypeAnnotation(DataTypeEnum.json)
@@ -111,7 +148,6 @@ public class VideoController extends BaseController {
 	}
 	@RequestMapping("/changepwd")
 	public void changepwd(HttpServletRequest request){
-		
 	}
 	@RequestMapping("/ajax_changepwd")
 	@DataTypeAnnotation(DataTypeEnum.json)
@@ -139,6 +175,4 @@ public class VideoController extends BaseController {
 		response.sendRedirect("index");
 	}
 	/**    用户     **/
-	/**    支付      **/
-	/**    支付      **/
 }

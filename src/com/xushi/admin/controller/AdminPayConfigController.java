@@ -54,4 +54,20 @@ public class AdminPayConfigController extends BaseController{
 		}
 		writeJson(response, JsonUtil.toJson(resultVo));
 	}
+	
+	@RequestMapping("/ajax_delete")
+	@DataTypeAnnotation(DataTypeEnum.json)
+	public void ajax_delete(Integer _action_id,HttpServletRequest request,HttpServletResponse response) throws Exception{
+		ResultVo resultVo = new ResultVo();
+		try {
+			if( null != _action_id ) {
+				Pay_config config = configService.getPay_config(_action_id);
+				configService.deleteConfig(config);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultVo = new ResultVo(false, e.getMessage());
+		}
+		writeJson(response, JsonUtil.toJson(resultVo));
+	}
 }

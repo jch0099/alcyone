@@ -10,4 +10,5 @@ public interface ConfigService {
 	List<Pay_config> findPay_config();
 	Pay_config getPay_config(Integer id);
 	void savePay_config(Pay_config pay_config);
+	void deleteConfig(Pay_config config);
 }

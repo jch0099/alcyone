@@ -12,6 +12,7 @@ import com.xushi.core.page.Page;
 import com.xushi.core.page.PageRequest;
 import com.xushi.dao.VideoDao;
 import com.xushi.dao.Video_userDao;
+import com.xushi.entity.User;
 import com.xushi.entity.Video;
 import com.xushi.entity.Video_user;
 import com.xushi.service.VideoService;
@@ -65,4 +66,24 @@ public class VideoServiceImpl implements VideoService{
 		videoDao.delete(video);
 	}
 
+	@Override
+	public boolean checkVideo(User user, Video video) {
+		if( null == video ) return false;
+		if( video.getIs_free() == 1 ) return true;
+		if( null == user ) return false;
+		QueryWhere where = new QueryWhere();
+		where.and("user", user);
+		where.and("video", video);
+		Video_user vu = video_userDao.getByWhere(where);
+		if( null == vu ) return false;
+		String now = DateTimeUtil.getCurDate();
+		if(null== vu.getEnd_date()) return true;
+		if ( now.compareTo(vu.getEnd_date()) > 0 ) return false;
+		return true;
+	}
+
+	public static void main(String[] args) {
+		String now = DateTimeUtil.getCurDate();
+		System.out.println(now.compareTo("2017-01-18"));
+	}
 }

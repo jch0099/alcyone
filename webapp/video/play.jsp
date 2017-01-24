@@ -9,14 +9,32 @@
 </head>
 <body class="home blog">
 <jsp:include page="/include/video/header.jsp"></jsp:include>
+<div class="index-ad">
+	<c:forEach items="${adtop }" var="item">
+		<c:if test="${!empty item.url }">
+			<div class="ad"><a href="${item.url }" target="_blank"><img alt="" src="${item.img }"></a></div>
+		</c:if>
+	</c:forEach>
+</div>
 <div class="content">
-	<div class="nav"><a>全部课程</a></div>
+	<div class="nav"><a href="index">视频列表</a></div>
 	<div class="video-box">
-		<div class="video-left"> werw </div>
+		<div class="video-left"> 
+			<div class="video-wrapper">
+				<c:if test="${empty video.url }">
+					<img src="${path }/images/404video.png"/>
+				</c:if>
+				<c:if test="${!empty video.url }">
+					<video width="100%" height="340" controls="controls">
+					  <source src="${video.url }" type="video/mp4">
+					</video>
+				</c:if>
+			</div>
+		</div>
 		<div class="video-right info">
-			<h3 class="title">第一集 BLACKPINK-《口哨》慢分解动作教学</h3>
-			<div class="see"><i class="fa fa-user" aria-hidden="true"></i><span>0人</span></div>
-			<div class="price_free">免费</div>
+			<h3 class="title">${video.title }</h3>
+			<div class="see"><i class="fa fa-user" aria-hidden="true"></i><span>${video.read_num }人</span></div>
+			<div class="price_free">${video.is_free==1?"免费":"收费" }</div>
 			<div class="btns">
 				<a class="btn btn-success button donate left" target="_blank" href="#">打赏</a>
 				<div class="share">
@@ -44,17 +62,27 @@
 		</div>
 	</div>
 </div>
-<div class="video-info">
+<%-- <div class="video-info">
 	<div class="title">
                 视频介绍
     </div>
     <div class="summary">
-                sfasdfasdfasdf
+        ${video.summary }
     </div>
+</div> --%>
+<div class="index-ad" style="margin-top: 50px;">
+	<c:forEach items="${adbottom }" var="item">
+		<c:if test="${!empty item.url }">
+			<div class="ad"><a href="${item.url }" target="_blank"><img alt="" src="${item.img }"></a></div>
+		</c:if>
+	</c:forEach>
 </div>
 <jsp:include page="/include/video/footer.jsp"></jsp:include>
 <script type="text/javascript">
-	
+	$(function(){
+		//$('#switcher').themeswitcher();
+		//$('video').video();
+	});
 </script>
 <%-- <script type='text/javascript' src='${path}/skin/ecms082/js/loader.js?ver=1.3'></script> --%>
 </body>

@@ -53,8 +53,8 @@ padding: 0;
 font-family: 'font';
 src: url('font.ttf');
 }
-body{word-break: break-all;margin:0px;padding:0px;font:12px/1.5 arial,microsoft yahei,simsun,simhei,sans-serif;}
-a,a:visited{text-decoration:none;cursor:pointer;color:#333;}
+body{word-break: break-all;margin:0px;padding:0px;/* font:12px/1.5 arial,microsoft yahei,simsun,simhei,sans-serif; */}
+/* .header a,.header a:focus{text-decoration:none;cursor:pointer;color:#333;} */
 input,select,textarea{border:#aaa solid 1px;box-sizing: border-box;}
 input,textarea{padding-left:4px;padding-right:4px;}
 img{border:none;}
@@ -222,5 +222,8 @@ line-height: 45px;}
 	.full_screen,.full_screen0{width:initial;}
 	.html_content img{width:100%;}
 	*{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+}
+section.container{
+	margin-top: 100px;
 }
 

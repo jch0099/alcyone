@@ -11,16 +11,20 @@
 
 <link rel="stylesheet" href="${path }/css/bootstrap.min.css">
 <link rel="stylesheet" href="${path }/css/font-awesome.min.css">
+<link rel="stylesheet" href="${path }/css/jquery-ui.min.css">
+<%-- <link rel="stylesheet" href="${path }/css/jquery.video.css"> --%>
 <link rel="stylesheet" href="${path }/css/video/header.css">
 <link rel='stylesheet' id='_main-css'  href='${path}/css/skin/ecms082/css/main.css?ver=1.3' type='text/css' media='all' />
 <link rel="icon" href="${path }/images/favicon.jpg" type="image/x-icon">
 
 <!-- JAVASCRIPT JS FILES --> 
 <script src="${path }/js/jquery.js"></script> 
+<script src="${path }/js/jquery-ui.min.js"></script> 
 <script src="${path }/js/bootstrap.min.js"></script> 
 <script src="${path }/js/smoothscroll.js"></script> 
 <script src="${path }/js/jquery.sticky.js"></script> 
+<%-- <script src="${path }/js/jquery.video.js"></script> --%>
 <script src="${path }/js/jquery.parallax.js"></script> 
 <script src="${path }/js/layer.js"></script>
 
-<title>昴宿六视频网站</title>
+<title>昴宿六视频</title>

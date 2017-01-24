@@ -9,12 +9,19 @@
 </head>
 <body class="home blog">
 <jsp:include page="/include/video/header.jsp"></jsp:include>
+<div class="index-ad">
+	<c:forEach items="${ads }" var="item">
+		<c:if test="${!empty item.url }">
+			<div class="ad"><a href="${item.url }" target="_blank"><img alt="" src="${item.img }"></a></div>
+		</c:if>
+	</c:forEach>
+</div>
 <section class="container">
   <div class="content-wrap">
     <div class="content">
       <div class="title">
         <h3> 最新发布 </h3>
-        <div class="more"><a href="?sortstr=read_num">热门浏览</a><!-- <a href="/zan/">最多赞</a>&nbsp;&nbsp;&nbsp;&nbsp;--></div> 
+        <div class="more"><a href="index">最新更新</a><a href="?sorttype=1">热门浏览</a><!-- <a href="/zan/">最多赞</a>&nbsp;&nbsp;&nbsp;&nbsp;--></div> 
       </div>
       <c:forEach var="item" items="${page.results }">
 	       <article class="excerpt">

@@ -22,7 +22,7 @@ if(location.href!=top.location.href){
     <input id="ref" name="ref" value="${param.ref }" type="hidden"/>
     <div class="logo"></div>
     <div class="content_box">
-        <div class="title">歡迎登錄    昴宿六內容管理系統</div>
+        <div class="title">昴宿六內容管理系統</div>
         <div class="content">
             <fieldset class="well_large">
                  <div class="control_group">
@@ -32,12 +32,6 @@ if(location.href!=top.location.href){
                  <div class="control_group">
                       <label class="control_label" for="pwd">密碼</label>
                       <input id="pwd" type="password" name="pwd" value="" />
-                 </div>
-                 <div class="control_group">
-                      <label class="control_label" for="checkcode">驗證碼</label>
-                      <input id="checkcode" type="text" name="checkcode" />
-                      <img id="checkimg" width="65" height="36" src="${path }/admin/verifyimage" />
-                      <p style="clear:both"></p>
                  </div>
                  <button class="btn btn-large yellow submit" type="submit">登錄</button>
             </fieldset>
@@ -69,11 +63,6 @@ $(function(){
 		if("" == $.trim(password.val())){
 			JSmartMsg("comm_msgBox","密碼不能為空.");
 			password.focus();
-			return false;
-		}
-		if("" == $.trim(checkcode.val())){
-			JSmartMsg("comm_msgBox","驗證碼不能為空.");
-			checkcode.focus();
 			return false;
 		}
 		//登录验证

@@ -1,3 +1,4 @@
+
 .content{
 	margin-top:80px;
 	/*height: 300px;
@@ -52,7 +53,6 @@
 }
 .video-info{
 	color: #f2f2f2;
-	height: 800px;
 	padding-left: 50px;
 	padding-right: 300px;
 }
@@ -67,4 +67,11 @@
 }
 .video-info .summary {
 	color: #000;
+}
+.video-wrapper{
+    border: black solid;
+}
+.video-wrapper video{
+	max-width:100%;
+	object-fit:fill
 }
