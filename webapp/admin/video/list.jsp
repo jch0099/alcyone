@@ -59,7 +59,7 @@
 	              <td>${result.is_free==1?"免费":"付费" }</td>
 	              <td>${result.amount }</td>
 	              <td><c:if test="${!empty result.img }"> <img alt="" src="${result.img }"> </c:if></td>
-	              <td>${result.url} </td>
+	              <td>${xw:x(result.url)} </td>
 	              <td>
           				<c:if test="${result.status == 2 }">
 	              			<span class="label label-danger" role="_status">未啟用</span>

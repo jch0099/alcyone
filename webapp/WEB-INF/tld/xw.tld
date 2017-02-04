@@ -5,8 +5,8 @@
   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
   version="2.0">
     
-  <description>Xtown 1.0 functions library</description>
-  <display-name>Xtown functions</display-name>
+  <description>xushi 1.0 functions library</description>
+  <display-name>xushi functions</display-name>
   <tlib-version>1.0</tlib-version>
   <short-name>xw</short-name>
   <uri>http://java.sun.com/jsp/jstl/functions</uri>
@@ -14,7 +14,7 @@
   <function>
     <description>文本显示长度（中文字符=2）</description>
     <name>textLength</name>
-    <function-class>com.xtown.web.taglibs.TextFunc</function-class>
+    <function-class>com.xushi.web.taglibs.TextFunc</function-class>
     <function-signature>int textLength(java.lang.String)</function-signature>
     <example>
       ${xw:textLength(param:info)}
@@ -24,7 +24,7 @@
   <function>
     <description>子文本（中文字符=2）</description>
     <name>textSubset</name>
-    <function-class>com.xtown.web.taglibs.TextFunc</function-class>
+    <function-class>com.xushi.web.taglibs.TextFunc</function-class>
     <function-signature>java.lang.String textSubset(java.lang.String, int)</function-signature>
     <example>
       ${xw:textSubset(param:info, 10)}
@@ -34,7 +34,7 @@
   <function>
     <description>文本截短（中文字符=2）</description>
     <name>textEllipsis</name>
-    <function-class>com.xtown.web.taglibs.TextFunc</function-class>
+    <function-class>com.xushi.web.taglibs.TextFunc</function-class>
     <function-signature>java.lang.String textEllipsis(java.lang.String, int)</function-signature>
     <example>
       ${xw:textEllipsis(param:info)}
@@ -44,7 +44,7 @@
   <function>
     <description>编码xml</description>
     <name>x</name>
-    <function-class>com.xtown.web.taglibs.TextFunc</function-class>
+    <function-class>com.xushi.web.taglibs.TextFunc</function-class>
     <function-signature>java.lang.String x(java.lang.String)</function-signature>
     <example>
       ${xw:x(param:info)}
