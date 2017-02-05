@@ -25,9 +25,7 @@
 					<img src="${path }/images/404video.png"/>
 				</c:if>
 				<c:if test="${!empty video.url }">
-					<video width="100%" height="340" controls="controls">
-					  <source src="${video.url }" type="video/mp4">
-					</video>
+					${video.url }
 				</c:if>
 			</div>
 		</div>
@@ -36,7 +34,7 @@
 			<div class="see"><i class="fa fa-user" aria-hidden="true"></i><span>${video.read_num }人</span></div>
 			<div class="price_free">${video.is_free==1?"免费":"收费" }</div>
 			<div class="btns">
-				<a class="btn btn-success button donate left" target="_blank" href="#">打赏</a>
+				<a class="btn btn-success button donate left" target="_blank" href="${path }/video/pay/index">打赏</a>
 				<div class="share">
 					<!-- JiaThis Button BEGIN -->
 					<div class="jiathis_style"><span class="jiathis_txt">分享到：</span>

@@ -17,11 +17,9 @@ import com.xushi.core.page.Page;
 import com.xushi.core.page.PageRequest;
 import com.xushi.core.page.Sort;
 import com.xushi.entity.Advertisement;
-import com.xushi.entity.Friend_link;
 import com.xushi.entity.User;
 import com.xushi.entity.Video;
 import com.xushi.service.AdvertisementService;
-import com.xushi.service.Friend_linkService;
 import com.xushi.service.UserService;
 import com.xushi.service.VideoService;
 import com.xushi.util.NumberUtil;
@@ -93,12 +91,19 @@ public class VideoController extends BaseController {
 				video.setRead_num(NumberUtil.toInt(video.getRead_num())+1);
 				videoService.saveVideo(video);
 				if( !c ) video.setUrl("");
+				handleVideoUrl(video);
 				request.setAttribute("video", video);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "/video/play";
+	}
+	private void handleVideoUrl(Video video) {
+		String url = StringUtil.toString(video.getUrl());
+		if( url.startsWith("<iframe") && url.endsWith("</iframe>") ) return;
+		if( url.startsWith("<embed ") && url.endsWith("</embed>") ) return;
+		video.setUrl("");
 	}
 	/**    视频      **/
 	/**    用户      **/
