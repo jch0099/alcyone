@@ -102,7 +102,7 @@ public class VideoController extends BaseController {
 	private void handleVideoUrl(Video video) {
 		String url = StringUtil.toString(video.getUrl());
 		if( url.startsWith("<iframe") && url.endsWith("</iframe>") ) return;
-		if( url.startsWith("<embed ") && url.endsWith("</embed>") ) return;
+		if( url.startsWith("<embed") && url.endsWith("</embed>") ) return;
 		video.setUrl("");
 	}
 	/**    视频      **/
