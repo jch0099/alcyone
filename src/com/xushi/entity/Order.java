@@ -34,6 +34,10 @@ public class Order implements Serializable {
 	@Column(name = "order_num", length = 255)
 	private String order_num;
 	
+	//阿里订单号唯一
+	@Column(name = "alipay_order_num", length = 255)
+	private String alipay_order_num;
+	
 	//类型  1 购买单个视频 2购买用户vip 3打赏
 	@Column(name = "type")
 	private Integer type;
@@ -128,6 +132,14 @@ public class Order implements Serializable {
 
 	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
+	}
+
+	public String getAlipay_order_num() {
+		return alipay_order_num;
+	}
+
+	public void setAlipay_order_num(String alipay_order_num) {
+		this.alipay_order_num = alipay_order_num;
 	}
 
 }

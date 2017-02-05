@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project default="publish" basedir="..">
+	<!--执行build的工作目录-->
+	<property name="build.dir" value="build" />
+	<!--增量更新文件开始时间-->
+	<property name="after.time" value="2017-02-04 00:00:00" />
+	<!--tmp目录-->
+	<property name="tmp.dir" value="build/tmp" />
+	<!--webapp目录-->
+	<property name="webapp.dir" value="webapp" />
+	<!-- 创建压缩包名称 -->
+	<property name="zip.name" value="xushi.zip" />
+
+	<target name="publish">
+
+		<delete dir="${tmp.dir}" />
+		<mkdir dir="${tmp.dir}" />
+		
+		<copy todir="${tmp.dir}" includeEmptyDirs="false">
+			<fileset dir="${webapp.dir}" >
+                <date when="after" datetime="${after.time}" pattern="yyyy-MM-dd HH:mm:ss" />
+			</fileset>
+		</copy>
+		<copy todir="${tmp.dir}/WEB-INF/lib" file="${build.dir}/xps3.jar" />
+
+		<delete dir="${tmp.dir}/work" />
+		<delete dir="${tmp.dir}/uploads" />
+		<delete dir="${tmp.dir}/WEB-INF/classes" />
+		<delete file="${tmp.dir}/WEB-INF/jdbc.properties" />
+		
+		<!-- js、css加时间戳-->
+		<tstamp prefix="build">
+        	<format property="date" pattern="yyyyMMdd"/>
+			<format property="time" pattern="yyyyMMddHHmmss"/>
+        </tstamp>
+		
+		<zip destfile="${build.dir}/${zip.name}" basedir="${tmp.dir}" />
+		<delete dir="${tmp.dir}" />
+		<echo message="创建完成: ${build.dir}/${zip.name}" />
+	</target>
+
+</project>
