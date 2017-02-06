@@ -32,9 +32,9 @@ public class AdminVideoController extends BaseController{
 	@Autowired ImageService imageService;
 	
 	@RequestMapping("/list")
-	public void list(String keyword,Integer is_free,Integer pageno,HttpServletRequest request){
+	public void list(String keyword,Integer is_free,Integer status,Integer pageno,HttpServletRequest request){
 		PageRequest pr = new PageRequest(pageno, 10);
-		Page<Video> page = videoService.findVideoPage(keyword,is_free,pr);
+		Page<Video> page = videoService.findVideoPage(keyword,is_free,status,pr);
 		request.setAttribute("page", page);
 	}
 	

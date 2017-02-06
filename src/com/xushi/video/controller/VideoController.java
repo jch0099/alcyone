@@ -57,7 +57,7 @@ public class VideoController extends BaseController {
 				sort = new Sort(false, "read_num","update_time");
 			}
 			pr.setSort(sort);
-			Page<Video> page = videoService.findVideoPage(null, null, pr);
+			Page<Video> page = videoService.findVideoPage(null,null,1,pr);
 			/*List<Video> list = page.getResults();
 			if( null != list ) for (Video video : list) {
 				//String img = StringUtil.toString(video.getImg());
@@ -90,8 +90,11 @@ public class VideoController extends BaseController {
 				boolean c = videoService.checkVideo(user,video);
 				video.setRead_num(NumberUtil.toInt(video.getRead_num())+1);
 				videoService.saveVideo(video);
-				if( !c ) video.setUrl("");
 				handleVideoUrl(video);
+				if( !c ) {
+					video.setUrl("");
+					request.setAttribute("noauth", true);
+				}
 				request.setAttribute("video", video);
 			}
 		} catch (Exception e) {
@@ -112,15 +115,17 @@ public class VideoController extends BaseController {
 	}
 	@RequestMapping("/ajax_reg")
 	@DataTypeAnnotation(DataTypeEnum.json)
-	public void ajax_reg(String account,String password,HttpServletRequest request,HttpServletResponse response) throws Exception{
+	public void ajax_reg(String account,String password,String brithday,HttpServletRequest request,HttpServletResponse response) throws Exception{
 		ResultVo vo = new ResultVo(true,"保存成功");
 		try {
 			if( StringUtil.isEmpty(account) || StringUtil.isEmpty(password) ) throw new DaoException("帐号密码必须填写");
+			if( StringUtil.isEmpty(brithday) ) throw new DaoException("生日必须填写");
 			User user = userService.getUserByAccount(account);
 			if( null != user ) throw new DaoException("帐号已存在");
 			user = new User();
 			user.setAccount(account);
 			user.setPassword(MD5MixUtil.md5Mix(password));
+			user.setBrithday(brithday);
 			userService.saveUser(user);
 			UserSessionUtil.setVideoUser(user, request);
 		} catch (Exception e) {
@@ -164,6 +169,28 @@ public class VideoController extends BaseController {
 			if( null == user ) throw new DaoException("当前没有帐号");
 			if ( !user.getPassword().equals(MD5MixUtil.md5Mix(oldpassword)) ) throw new DaoException("旧密码错误");
 			user.setPassword(MD5MixUtil.md5Mix(newpassword));
+			userService.saveUser(user);
+			UserSessionUtil.setVideoUser(user, request);
+		} catch (Exception e) {
+			e.printStackTrace();
+			vo.setResult(false);
+			vo.setMsg(e.getMessage());
+		}
+		writeJson(response, JsonUtil.toJson(vo));
+	}
+	@RequestMapping("/forgetpwd")
+	public void forgetpwd(HttpServletRequest request){
+	}
+	@RequestMapping("/ajax_forgetpwd")
+	@DataTypeAnnotation(DataTypeEnum.json)
+	public void ajax_forgetpwd(String account,String password,String brithday,HttpServletRequest request,HttpServletResponse response) throws Exception{
+		ResultVo vo = new ResultVo(true,"保存成功");
+		try {
+			if( StringUtil.isEmpty(account) || StringUtil.isEmpty(password) ) throw new DaoException("帐号密码必须填写");
+			if( StringUtil.isEmpty(brithday) ) throw new DaoException("生日必须填写");
+			User user = userService.getUserByAccount(account);
+			if( null == user ) throw new DaoException("帐号不存在");
+			user.setPassword(MD5MixUtil.md5Mix(password));
 			userService.saveUser(user);
 			UserSessionUtil.setVideoUser(user, request);
 		} catch (Exception e) {

@@ -35,6 +35,10 @@ public class User implements Serializable{
 	@Column(name = "password", length = 100)
 	private String password;
 	
+	//密码
+	@Column(name = "brithday", length = 100)
+	private String brithday;
+	
 	@Column(name = "type")
 	private Integer type = 2; //类型  1.管理员 2.普通 3.vip
 	
@@ -92,5 +96,13 @@ public class User implements Serializable{
 
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
+	}
+
+	public String getBrithday() {
+		return brithday;
+	}
+
+	public void setBrithday(String brithday) {
+		this.brithday = brithday;
 	}
 }

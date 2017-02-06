@@ -10,9 +10,9 @@
 <body>
 <header>
   <jsp:include page="/include/top.jsp">
-  	<jsp:param name="parentName" value="图片管理" />
+  	<jsp:param name="parentName" value="链接管理" />
   	<jsp:param name="parentUrl" value="list" />
-  	<jsp:param name="currName" value="图片列表" />
+  	<jsp:param name="currName" value="链接列表" />
   	<jsp:param name="hasPrint" value="false" />
   	<jsp:param name="hasExport" value="false" />
   </jsp:include>

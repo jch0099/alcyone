@@ -29,8 +29,8 @@
 	        <header><!-- <a class="cat" href="/zxdy/dzp/">动作片<i></i></a> -->
 	          <h2><a href="${path }/video/play?id=${item.id}" title="${item.title}">${item.title}</a></h2>
 	        </header>
-	        <p class="meta"><span class="pv"><i class="fa fa-eye"></i>阅读(${item.read_num==null?0:item.read_num})</span><!-- <a class="pc" href="/zxdy/dzp/2016-01-08/21.html#comments"><i class="fa fa-comments-o"></i>评论(<span class="ds-thread-count" data-thread-key="21" data-count-type="comments">0</span>)</a><span class="pv ding"><i class="fa fa-heart"></i>15</span></p> -->
-	      </article>
+	        <%-- <p class="meta"><span class="pv"><i class="fa fa-eye"></i>阅读(${item.read_num==null?0:item.read_num})</span><!-- <a class="pc" href="/zxdy/dzp/2016-01-08/21.html#comments"><i class="fa fa-comments-o"></i>评论(<span class="ds-thread-count" data-thread-key="21" data-count-type="comments">0</span>)</a><span class="pv ding"><i class="fa fa-heart"></i>15</span></p> -->
+	      --%> </article>
       </c:forEach>
       <div class="pagination">
         <ul>

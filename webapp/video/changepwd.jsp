@@ -21,7 +21,7 @@
     <div id="reg" class="item focus">
         <a class="head" href="#">修改密码</a>
           <div class="content">
-            <form id="regForm" action2="server.php?s=112&amp;p=42&amp;action=reg&amp;url=" method="post" action="server.php?s=112&amp;p=42&amp;action=reg&amp;url=" form_init="true" class=" OBase Form OBase Form">
+            <form id="regForm" method="post" action="" form_init="true" class="OBase Form OBase Form">
                 <input name="sharer" type="hidden" value="">
                 <div class="table"><div class="cell">旧密码</div><div class="cell"><input id="oldpwd" name="oldpwd" required="required" type="password" placeholder="输入旧密码"></div><div class="cell verify"></div></div>                                                                                                    
                  <div class="table"><div class="cell">新密码</div><div class="cell"><input id="pwd" minlength="6" name="password" required="required" type="password" placeholder="输入6到16位密码"></div><div class="cell verify"></div></div>

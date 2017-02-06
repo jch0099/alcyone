@@ -80,6 +80,25 @@
          ],
          "title" : "图片管理",
          "url" : "admin/image/list"
+     },
+   	 {
+         "code" : "05",
+         "item" : [
+            {
+               "code" : "0501",
+               "icon" : "",
+               "title": "订单管理",
+               "item" : [
+                  {
+                     "code" : "050101",
+                     "title" : "订单管理",
+                     "url" : "admin/pay_order/list"
+                  }
+               ]
+            }
+         ],
+         "title" : "订单管理",
+         "url" : "admin/pay_order/list"
      }
    ]
 }

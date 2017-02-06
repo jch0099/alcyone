@@ -59,6 +59,11 @@ public class ConfigServiceImpl implements ConfigService{
 	public Pay_config getPay_config(Integer id) {
 		return pay_configDao.getById(id);
 	}
+	
+	@Override
+	public Pay_config getPay_configByLength(Integer length) {
+		return pay_configDao.getBy("month_length",length);
+	}
 
 	@Override
 	@Transactional

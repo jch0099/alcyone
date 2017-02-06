@@ -3,7 +3,7 @@
 	<!--执行build的工作目录-->
 	<property name="build.dir" value="build" />
 	<!--增量更新文件开始时间-->
-	<property name="after.time" value="2017-02-04 00:00:00" />
+	<property name="after.time" value="2017-02-06 00:00:00" />
 	<!--tmp目录-->
 	<property name="tmp.dir" value="build/tmp" />
 	<!--webapp目录-->

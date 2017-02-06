@@ -26,13 +26,12 @@
          <div class="containerWrap center-block">
            <!-- 搜索栏 -->
            <div class="cm-f14 cm-pdt10 cm-tar cm-overflow">
-             <input class="cm-input-default cm-w200 cm-mr15" name="keyword" placeholder="請輸入關鍵字" value="${fn:escapeXml(param.keyword)}"  />
-             <%-- <select name="status" id="status" class="cm-select-default cm-mr15" role="_defaultData" data-defaultValue="${param.status}">
-          		<option value="">請選擇帳戶狀態 </option>
-          		<c:forEach var="arr" items="${commArray.arr_Status }" varStatus="i" begin="1">
-          			<option value="${i.index }">${arr }</option>
-          		</c:forEach>
-          	</select> --%>
+             <input class="cm-input-default cm-w200 cm-mr15" name="keyword" placeholder="请输入关键字" value="${fn:escapeXml(param.keyword)}"  />
+             <select name="is_free" id="is_free" class="cm-select-default cm-mr15" role="_defaultData" data-defaultValue="${param.is_free}">
+          		<option value="">请选择付费类型 </option>
+          		<option value="1">免费 </option>
+          		<option value="2">付费 </option>
+          	</select>
            	 <a href="javascript:void(0);" id="search-btn" role="_searchBtn" class="cm-btn-default search-btn cm-mr25" >搜索</a>
            	 <a href="edit" title="新增视频" class="pull-right cm-btn-confirm-bg cm-btn-default" target="_box">新增视频</a>
            </div>

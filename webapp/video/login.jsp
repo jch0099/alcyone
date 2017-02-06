@@ -18,11 +18,12 @@
     <div id="reg" class="item">
         <a class="head" href="reg">注册</a>
           <div class="content">
-            <form id="regForm" action2="server.php?s=112&amp;p=42&amp;action=reg&amp;url=" method="post" action="server.php?s=112&amp;p=42&amp;action=reg&amp;url=" form_init="true" class=" OBase Form OBase Form">
+            <form id="regForm" method="post" action="" form_init="true" class=" OBase Form OBase Form">
                 <input name="sharer" type="hidden" value="">
                                 <div class="table"><div class="cell">用户名</div><div class="cell"><input id="account" name="name" required="required" placeholder="输入用户名"></div><div class="cell verify"></div></div>                                                                                                    
                                 <div class="table"><div class="cell">密码</div><div class="cell"><input id="pwd" minlength="6" name="pwd" required="required" type="password" placeholder="输入6到16位密码"></div><div class="cell verify"></div></div>
                 <input class="submit train_background_color train_font_color" type="button" value="登录">
+                <a href="forgetpwd">忘记密码</a>
             </form>
         </div>
      </div>

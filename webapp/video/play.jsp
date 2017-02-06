@@ -31,10 +31,14 @@
 		</div>
 		<div class="video-right info">
 			<h3 class="title">${video.title }</h3>
-			<div class="see"><i class="fa fa-user" aria-hidden="true"></i><span>${video.read_num }人</span></div>
-			<div class="price_free">${video.is_free==1?"免费":"收费" }</div>
+			<div class="see"><!-- <i class="fa fa-user" aria-hidden="true"></i> --><span>${video.read_num }&nbsp;次观看</span></div>
+			<div class="price_free">${video.is_free==1?"":"收费" }</div>
 			<div class="btns">
-				<a class="btn btn-success button donate left" target="_blank" href="${path }/video/pay/index">打赏</a>
+				<a class="btn btn-success button donate left" target="_blank" href="${path }/video/pay/pay_">打赏</a>
+				<c:if test="${noauth}">
+				<a class="btn btn-success button donate left" target="_blank" href="javascript:void(0);" style="margin-left: 10px;">购买该视频</a>
+				</c:if>
+				<br>
 				<div class="share">
 					<!-- JiaThis Button BEGIN -->
 					<div class="jiathis_style"><span class="jiathis_txt">分享到：</span>

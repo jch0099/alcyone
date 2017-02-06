@@ -11,9 +11,8 @@ public class Global {
 
 	public static String WebPath;
 	public static String FilePath;
-	public static String OSSPath;
-	public static String OSSImagePath;
-	public static String OSSStylename;
+	public static String alipay_account;
+	public static String alipay_memo;
 
 	/**
 	 * 读取配置
@@ -33,9 +32,8 @@ public class Global {
 		// path
 		WebPath = ps.getProperty("web_path");
 		FilePath = ps.getProperty("file_path");
-		OSSPath = ps.getProperty("oss_path");
-		OSSImagePath = ps.getProperty("oss_image_path");
-		OSSStylename = ps.getProperty("oss_stylename");
+		alipay_account = ps.getProperty("alipay_account");
+		alipay_memo = ps.getProperty("alipay_memo");
 		return true;
 	}
 }

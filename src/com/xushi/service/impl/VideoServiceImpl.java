@@ -46,13 +46,14 @@ public class VideoServiceImpl implements VideoService{
 	}
 
 	@Override
-	public Page<Video> findVideoPage(String keyword, Integer is_free,PageRequest pr) {
+	public Page<Video> findVideoPage(String keyword, Integer is_free,Integer status,PageRequest pr) {
 		QueryWhere where = new QueryWhere();
 		/*QueryWhere orwhere = new QueryWhere();
 		orwhere.orLikeAll("title", SqlHelper.toJpqlParamLike(keyword));
 		orwhere.orLikeAll("title", SqlHelper.toJpqlParamLike(keyword));*/
 		if( !StringUtil.isEmpty(keyword) ) where.andLikeAll("title", SqlHelper.toJpqlParamLike(keyword));
 		if( NumberUtil.toInt(is_free) > 0 ) where.and("is_free", is_free);
+		if( NumberUtil.toInt(status) > 0 ) where.and("status", status);
 		return videoDao.findByWhere(where, pr);
 	}
 
@@ -82,8 +83,23 @@ public class VideoServiceImpl implements VideoService{
 		return true;
 	}
 
-	public static void main(String[] args) {
-		String now = DateTimeUtil.getCurDate();
-		System.out.println(now.compareTo("2017-01-18"));
+	@Override
+	public Video_user getVideo_user(Integer user_id, Integer video_id) {
+		QueryWhere where = new QueryWhere();
+		where.and("user.id", user_id);
+		where.and("video.id", video_id);
+		Video_user vu = video_userDao.getByWhere(where);
+		return vu;
 	}
+
+	@Override
+	@Transactional
+	public void saveVideo_user(Video_user video_user) {
+		if( video_user.getId() == null ) {
+			video_userDao.save(video_user);
+		}else {
+			video_userDao.update(video_user);
+		}
+	}
+
 }

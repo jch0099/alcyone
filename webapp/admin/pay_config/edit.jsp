@@ -13,7 +13,6 @@
       <form  class="form-horizontal" role="_editForm form" action="ajax_edit" data-validate="true"  id="editForm" method="post">
         <c:if test="${item.id > 0 }">
        		<input id="" name="id" type="hidden" value="${item.id }"/>
-       		<input id="" name="type" type="hidden" value="${item.type }"/>
         </c:if>
         <div class="main-contentWrap cm-f14">
           <table class="table">

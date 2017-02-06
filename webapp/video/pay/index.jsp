@@ -114,6 +114,7 @@ $(document).ready(function(e) {
 		}
 		console.info("购买时长:"+length);
 		console.info("购买数量:"+count);
+		window.location.href = "${path}/video/pay/pay_vip?length="+length+"&count="+count;
 		
 	});
 });
