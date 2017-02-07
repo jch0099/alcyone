@@ -65,7 +65,6 @@ public class VideoController extends BaseController {
 				//if( !img.startsWith("http") ) video.setImg(Global.WebPath+"uploads/"+video.getImg());
 			}*/
 			request.setAttribute("page", page);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -91,10 +90,7 @@ public class VideoController extends BaseController {
 				video.setRead_num(NumberUtil.toInt(video.getRead_num())+1);
 				videoService.saveVideo(video);
 				handleVideoUrl(video);
-				if( !c ) {
-					video.setUrl("");
-					request.setAttribute("noauth", true);
-				}
+				if( !c ) video.setUrl("-no-auth");
 				request.setAttribute("video", video);
 			}
 		} catch (Exception e) {

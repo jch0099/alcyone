@@ -15,8 +15,11 @@
 	 		<!-- <i class="fa fa-user" style="margin-right: 30px;margin-top: 22px;float: right;cursor: pointer;font-size: 20px;"></i> -->
 	 		<ul class="dropdown-menu">
 	           <div class="info">
-	           <div id="nickname">${_video_user.account }</div>
-	           <div id="level">${_video_user.type==1?"超级管理员":(_video_user.type==2?"普通会员":"vip会员") }</div>
+		           <div id="nickname">${_video_user.account }</div>
+		           <div id="level">${_video_user.type==1?"超级管理员":(_video_user.type==2?"普通会员":"vip会员") }</div>
+		           <c:if test="${_video_user.type==3 }">
+		           ${_video_user.end_date }
+		           </c:if>
 	           </div>
 	           <li><a href="${path }/video/changepwd">修改密码</a></li>
 	           <li><a href="${path }/video/pay/index">购买会员</a></li>

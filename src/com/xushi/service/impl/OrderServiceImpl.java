@@ -35,6 +35,7 @@ public class OrderServiceImpl implements OrderService{
 	public void saveOrder(Order order) {
 		Order temp = orderDao.getBy("order_num", order.getOrder_num());
 		if( null != temp && NumberUtil.toInt(temp.getId()) != NumberUtil.toInt(order.getId()) ) throw new DaoException("订单号不能重复!");
+		order.setUpdate_time(DateTimeUtil.getCurDateTime());
 		if( order.getId() == null ) {
 			order.setCreate_time(DateTimeUtil.getCurDateTime());
 			orderDao.save(order);
@@ -56,8 +57,7 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	@Transactional
 	public void payOrder(Order order) {
-		order.setUpdate_time(DateTimeUtil.getCurDateTime());
-		orderDao.update(order);
+		saveOrder(order);
 		if ( order.getType() == 3 ) {//打赏
 			return;
 		}
@@ -88,6 +88,7 @@ public class OrderServiceImpl implements OrderService{
 				if( end_date.compareTo(StringUtil.toString(vu.getEnd_date())) > 0 ) vu.setEnd_date(end_date);
 				videoService.saveVideo_user(vu);
 			}
+			user.setType(3);
 			user.setEnd_date(end_date);
 			userDao.update(user);
 		}

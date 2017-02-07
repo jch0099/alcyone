@@ -42,6 +42,14 @@ public class VideoInterceptor extends HandlerInterceptorAdapter {
 		contextPath = request.getContextPath();
 		requestURI = request.getRequestURI().replaceAll("\\/\\/", "/");
 
+		//刷新用户
+		user = UserSessionUtil.getVideoUser(request);
+		if( null != user ) {
+			user = userService.getUserById(user.getId());
+			UserSessionUtil.setVideoUser(user, request);
+			return true;
+		}
+		
 		//过滤后缀,直接跳过
 		for (String suffix : m_suffixs) {
 			if (requestURI.endsWith("." + suffix)) {
@@ -63,8 +71,7 @@ public class VideoInterceptor extends HandlerInterceptorAdapter {
 				dataType = handlerMethod.getMethodAnnotation(DataTypeAnnotation.class);
 			} catch (Exception e) {e.printStackTrace();}
 		}
-		user = UserSessionUtil.getVideoUser(request);
-		if( null != user ) return true;
+		
 		redirectTo(dataType, contextPath + currentPath, requestURI, "請登錄。", request, response);
 		return false;
 		/*// 获取一个Cookie

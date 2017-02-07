@@ -17,10 +17,12 @@ import com.xushi.core.util.Global;
 import com.xushi.entity.Order;
 import com.xushi.entity.Pay_config;
 import com.xushi.entity.User;
+import com.xushi.entity.Video;
 import com.xushi.service.ConfigService;
 import com.xushi.service.OrderService;
 import com.xushi.service.UserService;
 import com.xushi.service.VideoService;
+import com.xushi.util.NumberUtil;
 import com.xushi.util.UserSessionUtil;
 
 /**
@@ -59,7 +61,6 @@ public class PayController extends BaseController {
 			order.setType(2);
 			order.setUser_id(user.getId());
 			orderService.saveOrder(order);
-			request.setAttribute("order", order);
 			request.setAttribute("optEmail", Global.alipay_account);
 			request.setAttribute("payAmount", payAmount);
 			request.setAttribute("title", order.getId());
@@ -69,17 +70,40 @@ public class PayController extends BaseController {
 		return "/video/pay/pay";
 	}
 	
+	@RequestMapping("/pay_video")
+	public String pay_video(Integer id,HttpServletRequest request,HttpServletResponse response) throws IOException{
+		try {
+			if( null == id ) throw new DaoException("参数错误");
+			User user = UserSessionUtil.getVideoUser(request);
+			Video video = videoService.getVideo(id);
+			if( video.getIs_free() == 1 || NumberUtil.toFloat(video.getAmount()) <= 0 ) throw new DaoException("该视频是免费的");
+			Float payAmount = video.getAmount();
+			Order order = new Order();
+			order.setAmount(payAmount);
+			order.setVideo_id(video.getId());
+			UUID uuid = UUID.randomUUID();
+			order.setOrder_num(uuid.toString());
+			order.setType(1);
+			order.setUser_id(user.getId());
+			orderService.saveOrder(order);
+			request.setAttribute("optEmail", Global.alipay_account);
+			request.setAttribute("payAmount", payAmount);
+			request.setAttribute("title", order.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/video/pay/pay";
+	}
+	//支付
 	@RequestMapping("/pay")
 	public void pay(HttpServletRequest request) throws IOException{
 		request.setAttribute("optEmail", Global.alipay_account);
 		request.setAttribute("payAmount", "0.01");
 		request.setAttribute("title", "打赏");
 	}
+	//打赏
 	@RequestMapping("/pay_")
 	public void pay_(HttpServletRequest request) throws IOException{
-		request.setAttribute("optEmail", Global.alipay_account);
-		request.setAttribute("payAmount", "0.01");
-		request.setAttribute("title", "打赏");
 	}
 	/**    支付      **/
 }

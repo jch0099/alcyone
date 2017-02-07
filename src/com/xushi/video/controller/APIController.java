@@ -19,7 +19,6 @@ import com.xushi.entity.vo.AlipayVo;
 import com.xushi.service.OrderService;
 import com.xushi.util.NumberUtil;
 import com.xushi.util.date.DateTimeUtil;
-import com.xushi.util.gson.JsonUtil;
 import com.xushi.util.http.HttpUtil;
 
 /**
@@ -34,7 +33,6 @@ public class APIController extends BaseController {
 	
 	@RequestMapping("/callback")
 	public void callback(AlipayVo vo,HttpServletRequest request,HttpServletResponse response) throws Exception{
-		System.out.println(JsonUtil.toJson(vo));
 		String msg = "Fail";
 		try {
 			int id = NumberUtil.toInt(vo.getTitle());

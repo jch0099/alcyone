@@ -57,7 +57,7 @@ public class Order implements Serializable {
 	
 	//用户vip时长,type为2时     月为单位
 	@Column(name = "month_length")
-	private Integer month_length = 1;
+	private Integer month_length;
 	
 	//价钱
 	@Column(name = "amount")

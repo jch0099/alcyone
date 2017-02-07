@@ -115,7 +115,7 @@ body{
 	overflow: hidden;
 	font-size: 0;
 }
-.logo img{vertical-align: top;max-height: 32px;display: block;margin-bottom: 32px;}
+.logo img{vertical-align: top;max-height: 32px;display: block;}
 
 .brand{
 	font-size: 14px;

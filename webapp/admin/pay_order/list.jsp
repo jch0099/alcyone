@@ -42,7 +42,6 @@
                    <th width="10%">id</th>
                    <th width="15%">订单帐号</th>
                    <th width="15%">订单类型</th>
-                   <th width="10%">购买时长</th>
                    <th width="10%">价格</th>
                    <th width="5%">状态</th>
                    <th width="15%">创建時間</th>
@@ -59,7 +58,6 @@
 	              	<c:if test="${result.type==2 }">购买用户vip </c:if>
 	              	<c:if test="${result.type==3 }">打赏 </c:if>
 	              </td>
-	              <td>${result.month_length }</td>
 	              <td>${result.amount} </td>
 	              <td>
           				<c:if test="${result.status == 2 }">
