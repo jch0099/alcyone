@@ -34,6 +34,10 @@ public class Video implements Serializable {
 	@Column(name = "img", length = 200)
 	private String img;
 	
+	//视频类型 1表示站内视频  2表示站外视频
+	@Column(name = "type")
+	private Integer type = 1;
+	
 	//视频url
 	@Column(name = "url", length = 2000)
 	private String url;
@@ -152,6 +156,14 @@ public class Video implements Serializable {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 
 }

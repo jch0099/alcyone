@@ -24,8 +24,9 @@ public final class Const {
 	
 	/**文件上传相关配置**/
 	public final static String UPLOAD_URL_ROOT = Global.WebPath + "/uploads/";
-	
 	public final static String UPLOAD_FLODER_ROOT = Global.FilePath + "/uploads/";
+	public final static String VIDEO_URL_ROOT = Global.WebPath + "/video_file/";
+	public final static String VIDEO_FLODER_ROOT = Global.FilePath + "/video_file/";
 	
 	/**用于与密码结合MD5混淆*/
 	public static final String MD5_MIX = "jw134#%pqNLVfn";
