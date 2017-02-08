@@ -24,7 +24,7 @@
 				<c:if test="${empty video.url || video.url=='-no-auth' }">
 					<img src="${path }/images/404video.png"/>
 				</c:if>
-				<c:if test="${!empty video.url }">
+				<c:if test="${!empty video.url && video.url!='-no-auth' }">
 					${video.url }
 				</c:if>
 			</div>
@@ -36,7 +36,7 @@
 			<div class="btns">
 				<a class="btn btn-success button donate left" target="_blank" href="${path }/video/pay/pay_">打赏</a>
 				<c:if test="${video.url=='-no-auth'}">
-				<a class="btn btn-success button donate left" target="_blank" href="${path }/video/pay/pay_video?id=${video.id }" style="margin-left: 10px;">购买该视频</a>
+					<a class="btn btn-success button donate left" target="_blank" href="${path }/video/pay/pay_video?id=${video.id }" style="margin-left: 10px;">购买该视频</a>
 				</c:if>
 				<br>
 				<div class="share">

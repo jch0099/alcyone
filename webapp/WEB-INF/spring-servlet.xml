@@ -48,6 +48,7 @@
 						<value>/video/login</value>
 						<value>/video/ajax_login</value>
 						<value>/video/reg</value>
+						<value>/video/ajax_reg</value>
 						<value>/video/forgetpwd</value>
 						<value>/video/index</value>
 						<value>/video/play</value>

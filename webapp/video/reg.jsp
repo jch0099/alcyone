@@ -20,7 +20,7 @@
           <div class="content">
             <form id="regForm" method="post" action="" form_init="true" class=" OBase Form OBase Form">
                 <input name="sharer" type="hidden" value="">
-                <div class="table"><div class="cell">用户名</div><div class="cell"><input id="account" name="account" required="required" placeholder="输入用户名"></div><div class="cell verify"></div></div>                                                                                                    
+                <div class="table"><div class="cell">用户名</div><div class="cell"><input id="account" name="account" required="required" placeholder="输入用户名(必须使用邮箱格式,建议使用自己的邮箱)"></div><div class="cell verify"></div></div>                                                                                                    
                 <div class="table"><div class="cell">密码</div><div class="cell"><input id="pwd" minlength="6" name="password" required="required" type="password" placeholder="输入6到16位密码"></div><div class="cell verify"></div></div>
                 <div class="table"><div class="cell">确认密码</div><div class="cell"><input id="pwd2" required="required" type="password" placeholder="确认密码"></div><div class="cell verify"></div></div>
                 <div class="table"><div class="cell"></div><div class="cell">请输入你的生日或者一段字符串用于找回密码</div><div class="cell verify"></div></div>
@@ -43,6 +43,10 @@
 		var brithday = $("#brithday").val();
 		if( account.length == 0 || pwd.length == 0 || pwd2.length == 0 ) {
 			layer.msg("请填写帐号/密码/确认密码");
+			return;
+		}
+		if( !isEmail(account) ) {
+			layer.msg("请使用邮箱注册");
 			return;
 		}
 		if( pwd.length < 6 ) {
@@ -69,6 +73,11 @@
 			}
 		});
 	});
+	
+	function isEmail(str){
+		var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+		return reg.test(str);
+	}
 </script>
 </body>
 </html>
