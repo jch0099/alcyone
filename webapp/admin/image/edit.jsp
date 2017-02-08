@@ -32,7 +32,7 @@
                    	<a href="javascript:void(0);"></a>
                     <img src="${path}/images/default-photo.jpg" border="0"  width="100%">
                   </div>
-                  <input type="hidden" name="img" id="img" <c:if test="${item.id > 0  && fn:length(item.img) > 0}"> data-baseurl="${path}/uploads/"  role="_showPicurl" </c:if> value="${item.img}" class="{required:true,maxlength:50}" />
+                  <input type="hidden" name="img" id="img" <c:if test="${item.id > 0  && fn:length(item.img) > 0}"> data-baseurl="${path}/uploads/"  role="_showPicurl" </c:if> value="${item.img}" class="{required:true,maxlength:200}" />
                   <input class="fileupload" id="fileupload1" type="file" name="files[]" role="_upload" data-show="true" data-target="img" accept="image/gif,image/jpeg,image/png">
                 </td>
               </tr>

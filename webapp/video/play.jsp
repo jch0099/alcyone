@@ -22,7 +22,7 @@
 		<div class="video-left"> 
 			<div class="video-wrapper">
 				<c:if test="${empty video.url || video.url=='-no-auth' }">
-					<img src="${path }/images/404video.png"/>
+					<img src="${video.img }"/>
 				</c:if>
 				<c:if test="${!empty video.url && video.url!='-no-auth' }">
 					${video.url }
