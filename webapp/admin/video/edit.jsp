@@ -10,7 +10,7 @@
   <body style="width:750px; overflow-x:hidden;" path="${path}">
     <!--主区域 -->
     <div class="main-container" id="mainContainer">
-      <form  class="form-horizontal" role="_editForm form" action="ajax_edit" data-validate="true"  id="editForm" method="post">
+      <form  class="form-horizontal" role="_editForm form" action="ajax_edit" data-validate="true" id="editForm" method="post">
         <c:if test="${item.id > 0 }">
        		<input id="" name="id" type="hidden" value="${item.id }"/>
        		<input id="" name="create_time" type="hidden" value="${item.create_time }"/>
@@ -148,6 +148,9 @@ $(function(){
 		}
 	});
 });
+function validate(){
+	return false;
+}
 </script>
 </html>
 

@@ -26,12 +26,12 @@
                 <div class="table"><div class="cell"></div><div class="cell">请输入你的生日或者一段字符串用于找回密码</div><div class="cell verify"></div></div>
                 <div class="table"><div class="cell">生日</div><div class="cell"><input id="brithday" required="required" type="text" placeholder="生日"></div><div class="cell verify"></div></div>
                 
-                <div><input type="checkbox" checked="checked" class="input ok" tips="请同意用户协议">同意<a class="agreement_btn">《用户协议》</a></div>
+                <!-- <div><input type="checkbox" checked="checked" class="input ok" tips="请同意用户协议">同意<a class="agreement_btn">《用户协议》</a></div> -->
                 <input class="submit train_background_color train_font_color" type="button" value="注册">
             </form>
         </div>
      </div>
-    <div id="agreement" class="hide"><h3 class="title">用户协议</h3><div class="padding"><p style="margin-top:5px;margin-right:0;margin-bottom:5px;margin-left: 0"><span style="font-size: 14px;font-family: 微软雅黑, sans-serif">用户协议</span></p></div></div></div>
+    <!-- <div id="agreement" class="hide"><h3 class="title">用户协议</h3><div class="padding"><p style="margin-top:5px;margin-right:0;margin-bottom:5px;margin-left: 0"><span style="font-size: 14px;font-family: 微软雅黑, sans-serif">用户协议</span></p></div></div> --></div>
 </section>
 <jsp:include page="/include/video/footer.jsp"></jsp:include>
 <%-- <script type='text/javascript' src='${path}/skin/ecms082/js/loader.js?ver=1.3'></script> --%>
