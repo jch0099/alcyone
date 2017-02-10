@@ -1,5 +1,6 @@
 .header .logo{
-	margin-left: 100px;
+	position:fixed;
+	margin-left: 10%;
 }
 .logo img{
 	max-height: 100px !important;
@@ -51,8 +52,8 @@ section.container{
 	margin-left: 20px;
 }
 .header .user-info {
-	position:absolute;
-	right: 120px;
+	position:fixed;
+	right: 12%;
 	text-align: center;
 }
 .header .user-info ul {

@@ -11,11 +11,6 @@
                      "code" : "010101",
                      "title" : "视频管理",
                      "url" : "admin/video/list"
-                  },
-                  {
-                     "code" : "010102",
-                     "title" : "视频源管理",
-                     "url" : "admin/video_source/list"
                   }
                ],
                "title" : "视频管理"

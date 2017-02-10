@@ -19,7 +19,7 @@
           <table class="table">
             <tbody>
               <tr>
-                <td class="col-xs-2 table-item"><label class="cm-required">*</label>标题:</td>
+                <td class="col-xs-2 table-item"><label class="cm-required">*</label>标题： </td>
                 <td class="col-xs-8">
                   <input type="text" class="table-input cm-w200 {required:true,maxlength:200}" name="title" id="" value="${item.title }"/>
                 </td>
@@ -44,6 +44,13 @@
                   <input class="fileupload" id="fileupload1" type="file" name="files[]" role="_upload" data-show="true" data-target="small_logo" accept="image/gif,image/jpeg,image/png">
                 </td>
               </tr> --%>
+              <tr>
+                <td class="col-xs-2 table-item"><label class="cm-required">*</label>视频类型：</td>
+                <td class="col-xs-8">
+                	<input type="radio" class="table-input" name="type" <c:if test="${item.type==null||item.type==1 }">checked="checked"</c:if>  value="1"/>站内视频&nbsp;
+                  	<input type="radio" class="table-input" name="type" <c:if test="${item.type!=null&&item.type!=1 }">checked="checked"</c:if>  value="2"/>站外视频
+                </td>
+              </tr>
               <tr>
                 <td class="col-xs-2 table-item"><label class="cm-required">*</label>视频地址：</td>
                 <td class="col-xs-8">

@@ -32,7 +32,7 @@
               <tr>
                 <td class="col-xs-2 table-item"><label class="cm-required">*</label>图片链接：</td>
                 <td class="col-xs-8">
-                  <input type="text" class="table-input cm-w200 {required:true,maxlength:200}" name="img" id="" value="${item.img }"/>
+                  <input type="text" class="table-input cm-w200 {required:true,maxlength:2000}" name="img" id="" value="${item.img }"/>
                   <a id="menuBtn" href="javascript:void(0);">选择</a>
                   <ul id="treeDemo" class="ztree" style="display: none;"></ul>
                 </td>

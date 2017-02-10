@@ -22,7 +22,7 @@
 		           </c:if>
 	           </div>
 	           <li><a href="${path }/video/changepwd">修改密码</a></li>
-	           <li><a href="${path }/video/pay/index">购买会员</a></li>
+	           <li><a href="${path }/video/pay/index" target="_blank">购买会员</a></li>
 	           <li><a href="${path }/video/logout">退出系统</a></li>
 	       </ul>
  		</div>

@@ -19,7 +19,7 @@
           <table class="table">
             <tbody>
                 <tr>
-                <td class="col-xs-2 table-item"><label class="cm-required">*</label>标题:</td>
+                <td class="col-xs-2 table-item"><label class="cm-required">*</label>标题：</td>
                 <td class="col-xs-8">
                   <input type="text" class="table-input cm-w200 {required:true,maxlength:200}" name="title" id="" value="${item.title }"/>
                 </td>

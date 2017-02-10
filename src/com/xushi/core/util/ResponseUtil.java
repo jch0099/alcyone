@@ -1,5 +1,7 @@
 package com.xushi.core.util;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -94,7 +96,30 @@ public class ResponseUtil {
 			out.flush();
 			out.close();
 		}
-
+	}
+	
+	public static void outMp4(HttpServletResponse response, File file,String fileName) throws IOException{
+		response.setHeader("Pragma","No-cache");
+		response.setHeader("Cache-Control","no-cache");
+		response.setDateHeader("Expires", -10);
+		response.setContentType("application/octet-stream");
+		//response.setContentLength(file.getTotalSpace());
+		response.addHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
+		OutputStream out = response.getOutputStream();
+		try {
+			FileInputStream fi = new FileInputStream(file);
+			int len = fi.available();
+			byte[] b = new byte[len];
+			response.setContentLength(len);
+			if( fi.read(b) != -1){
+				out.write(b);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			out.flush();
+			out.close();
+		}
 	}
 	
 	public static void jsRedirect(String path, HttpServletResponse response) {

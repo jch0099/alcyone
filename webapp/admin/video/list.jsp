@@ -40,8 +40,9 @@
              <thead>
                 <tr>
                    <th width="5%">视频id</th>
-                   <th width="15%">标题</th>
+                   <th width="10%">标题</th>
                    <th width="8%">免费状态</th>
+                   <th width="8%">视频类型</th>
                    <th width="10%">视频价格</th>
                    <th width="10%">视频封面</th>
                    <th width="10%">视频链接</th>
@@ -56,6 +57,7 @@
 	              <td>${result.id }</td>
 	              <td>${result.title }</td>
 	              <td>${result.is_free==1?"免费":"付费" }</td>
+	              <td>${result.type==1?"站内视频":"站外视频" }</td>
 	              <td>${result.amount }</td>
 	              <td><c:if test="${!empty result.img }"> <img alt="" src="${result.img }"> </c:if></td>
 	              <td>${xw:x(result.url)} </td>

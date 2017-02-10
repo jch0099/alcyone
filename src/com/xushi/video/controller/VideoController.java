@@ -1,5 +1,6 @@
 package com.xushi.video.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xushi.core.controller.BaseController;
@@ -16,6 +18,7 @@ import com.xushi.core.dao.DaoException;
 import com.xushi.core.page.Page;
 import com.xushi.core.page.PageRequest;
 import com.xushi.core.page.Sort;
+import com.xushi.core.util.ResponseUtil;
 import com.xushi.entity.Advertisement;
 import com.xushi.entity.User;
 import com.xushi.entity.Video;
@@ -25,8 +28,10 @@ import com.xushi.service.VideoService;
 import com.xushi.util.NumberUtil;
 import com.xushi.util.StringUtil;
 import com.xushi.util.UserSessionUtil;
+import com.xushi.util.file.FileUtil;
 import com.xushi.util.gson.JsonUtil;
 import com.xushi.util.security.MD5MixUtil;
+import com.xushi.util.system.Const;
 import com.xushi.web.annotation.DataTypeAnnotation;
 import com.xushi.web.annotation.DataTypeEnum;
 import com.xushi.web.vo.ResultVo;
@@ -89,7 +94,7 @@ public class VideoController extends BaseController {
 				boolean c = videoService.checkVideo(user,video);
 				video.setRead_num(NumberUtil.toInt(video.getRead_num())+1);
 				videoService.saveVideo(video);
-				handleVideoUrl(video);
+				//handleVideoUrl(video);
 				if( !c ) video.setUrl("-no-auth");
 				request.setAttribute("video", video);
 			}
@@ -97,6 +102,26 @@ public class VideoController extends BaseController {
 			e.printStackTrace();
 		}
 		return "/video/play";
+	}
+	@RequestMapping("/get_video/{id}.{ext}")
+	public void get_video(@PathVariable Integer id,@PathVariable String ext, HttpServletRequest request,HttpServletResponse response) throws Exception{
+		
+		try {
+			if( null == id || null == ext ) throw new DaoException("参数错误");
+			Video v = videoService.getVideo(id);
+			if( null == v ) throw new DaoException("未找到视频");
+			String filepath = Const.VIDEO_FLODER_ROOT + v.getUrl();
+			if ( !FileUtil.exists(Const.VIDEO_FLODER_ROOT+v.getUrl()) ) throw new DaoException("站内视频文件不存在");
+			User user = UserSessionUtil.getVideoUser(request);
+			boolean c = videoService.checkVideo(user,v);
+			if( !c ) throw new DaoException("无权限观看该视频");
+			File file = new File(filepath);
+			ResponseUtil.outMp4(response, file, "alcyone.mp4");
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		response.sendRedirect(request.getContextPath()+"/video/index");
 	}
 	private void handleVideoUrl(Video video) {
 		String url = StringUtil.toString(video.getUrl());

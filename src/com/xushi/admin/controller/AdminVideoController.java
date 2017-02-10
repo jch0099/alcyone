@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.xushi.core.controller.BaseController;
+import com.xushi.core.dao.DaoException;
 import com.xushi.core.page.Page;
 import com.xushi.core.page.PageRequest;
 import com.xushi.entity.Image;
 import com.xushi.entity.Video;
 import com.xushi.service.ImageService;
 import com.xushi.service.VideoService;
+import com.xushi.util.NumberUtil;
+import com.xushi.util.file.FileUtil;
 import com.xushi.util.gson.JsonUtil;
+import com.xushi.util.system.Const;
 import com.xushi.web.annotation.DataTypeAnnotation;
 import com.xushi.web.annotation.DataTypeEnum;
 import com.xushi.web.vo.ResultVo;
@@ -65,6 +69,9 @@ public class AdminVideoController extends BaseController{
 	public void ajax_edit(Video video,HttpServletRequest request,HttpServletResponse response) throws Exception{
 		ResultVo resultVo = new ResultVo();
 		try {
+			if( NumberUtil.toInt(video.getType()) == 1 ) {
+				if ( !FileUtil.exists(Const.VIDEO_FLODER_ROOT+video.getUrl()) ) throw new DaoException("站内视频文件不存在");
+			}
 			videoService.saveVideo(video);
 		} catch (Exception e) {
 			e.printStackTrace();

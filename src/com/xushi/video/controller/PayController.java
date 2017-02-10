@@ -104,6 +104,7 @@ public class PayController extends BaseController {
 	//打赏
 	@RequestMapping("/pay_")
 	public void pay_(HttpServletRequest request) throws IOException{
+		request.setAttribute("optEmail", Global.alipay_account);
 	}
 	/**    支付      **/
 }

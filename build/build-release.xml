@@ -25,6 +25,7 @@
 
 		<delete dir="${tmp.dir}/work" />
 		<delete dir="${tmp.dir}/uploads" />
+		<delete dir="${tmp.dir}/video_file" />
 		<delete dir="${tmp.dir}/WEB-INF/classes" />
 		<delete file="${tmp.dir}/WEB-INF/jdbc.properties" />
 		

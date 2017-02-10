@@ -24,8 +24,8 @@
         <div class="more"><a href="index">最新更新</a><a href="?sorttype=1">热门浏览</a><!-- <a href="/zan/">最多赞</a>&nbsp;&nbsp;&nbsp;&nbsp;--></div> 
       </div>
       <c:forEach var="item" items="${page.results }">
-	       <article class="excerpt">
-	        <p class="image-container" ><a class="focus" href="${path }/video/play?id=${item.id}"><img data-src="" class="thumb" src="${item.img }"></a></p>
+	       <article class="excerpt" style="width: 300px;height: 300px;">
+	        <p class="image-container" ><a class="focus" href="${path }/video/play?id=${item.id}"><img data-src="" class="thumb" src="${item.img }" style="width: 300px;height: 300px;"></a></p>
 	        <header><!-- <a class="cat" href="/zxdy/dzp/">动作片<i></i></a> -->
 	          <h2><a href="${path }/video/play?id=${item.id}" title="${item.title}">${item.title}</a></h2>
 	        </header>
