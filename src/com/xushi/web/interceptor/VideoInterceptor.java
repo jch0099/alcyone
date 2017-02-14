@@ -60,7 +60,7 @@ public class VideoInterceptor extends HandlerInterceptorAdapter {
 		//例外列表
 		if( null != m_excludes ) {
 			for (String ex : m_excludes) {
-				if (requestURI.equals(contextPath + ex)) {
+				if (requestURI.contains(ex)) {
 					return super.preHandle(request, response, handler);
 				}
 			}

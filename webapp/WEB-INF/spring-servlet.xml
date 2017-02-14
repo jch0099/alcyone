@@ -53,6 +53,7 @@
 						<value>/video/index</value>
 						<value>/video/play</value>
 						<value>/video/pay/pay_</value>
+						<value>/video/get_video/</value>
 					</set>
 				</property>
 			</bean>
