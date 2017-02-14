@@ -4,7 +4,7 @@
 <footer class="footer">
   <div class="container">
     <div class="fcode"> </div>
-    <p>&copy; 2017 © <a href="${path }/video/index">昴宿六</a> <!-- <a href="#" target="_blank">免责声明</a> <a href="#" target="_blank">投稿规则</a> --> <!-- <a href="#" target="_blank">鲁ICP备12345678号</a> --> <br>
+    <p>&copy; 2017 © <a href="${path }/video/index">昴宿六</a> <br/><br/>业务合作QQ:&nbsp;&nbsp;&nbsp;<a target=blank href=tencent://message/?uin=810174322>810174322</a><!-- <a href="#" target="_blank">免责声明</a> <a href="#" target="_blank">投稿规则</a> --> <!-- <a href="#" target="_blank">鲁ICP备12345678号</a> --> <br>
     </p>
     </div>
     <!-- <div class="yqlj">
