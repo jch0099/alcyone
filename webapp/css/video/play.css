@@ -75,5 +75,5 @@
 .video-wrapper video{
 	max-width:100%;
 	object-fit:fill;
-	max-height: 400px;
+	height: 360px;
 }

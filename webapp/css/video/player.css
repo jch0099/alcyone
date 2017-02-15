@@ -1,5 +1,5 @@
 .playContent{  background:#000000; padding-top: 3px;}
-.playScreen{  margin: auto;}
+.playScreen{  margin: auto;height: 360px;}
 .proLines{ color:#D0D0D0; padding-left:1px;padding-right:1px; height:18px;}
 .arial{  font-size: 12px; font-weight: 500; font-family: arial;line-height:18px; float:left;}
 .line {
@@ -37,7 +37,8 @@
 .prevBar{ width:28px; height: 28px;  padding-top:8px; margin-left: 5px; float:left;cursor: pointer;}
 .startBar{ width:34px; height: 33px; padding-top:5px; margin-left: 6px;float:left; cursor: pointer;}
 .nextBar{ width:28px; height: 28px; padding-top:8px; margin-left: 8px;float:left ;cursor: pointer;}
-.voiceContent{ width:80px;height:15px;padding-top:15px; margin-right: 28px;float:right ;color:#fff}
+.voiceContent{ width:80px;height:15px;padding-top:15px; float:right ;color:#fff}
+.fullscreen{ margin-right:10px; height:15px;padding-top:10px; float:right ;color:#fff;cursor: pointer;}
 .voice{ float:left;}
 .voiceline{
     float:left;

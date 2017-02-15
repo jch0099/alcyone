@@ -70,6 +70,33 @@ var jsPlayer=function(playcontent,palyerwidth,selector){
                 var myVideo=document.getElementById(selector);
                 myVideo.volume=Math.round((100/45)*currentX)/100>1?1:Math.round((100/45)*currentX)/100;
             });
+            $(".fullscreen #fullscreen").click(function(){
+            	var element = dom;
+            	if(element.requestFullscreen) {
+        		element.requestFullscreen();
+        		} else if(element.mozRequestFullScreen) {
+        		element.mozRequestFullScreen();
+        		} else if(element.msRequestFullscreen){
+        		element.msRequestFullscreen();
+        		} else if(element.oRequestFullscreen){
+        		element.oRequestFullscreen();
+        		}
+        		else if(element.webkitRequestFullscreen)
+        		{
+        		element.webkitRequestFullScreen();
+        		}else{
+
+        		var docHtml = document.documentElement;
+        		var docBody = document.body;
+        		var videobox = document.getElementById('videobox');
+        		var cssText = 'width:100%;height:100%;overflow:hidden;';
+        		docHtml.style.cssText = cssText;
+        		docBody.style.cssText = cssText;
+        		videobox.style.cssText = cssText+';'+'margin:0px;padding:0px;';
+        		document.IsFullScreen = true;
+
+        		}
+            });
         })();
         //进度条拖放程序
         (function(){

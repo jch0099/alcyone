@@ -6,9 +6,10 @@
 <head>
 <jsp:include page="/include/video/common.jsp"></jsp:include>
 <link rel="stylesheet" href="${path }/css/video/play.css">
-<link rel="stylesheet" href="${path }/css/video/player.css">
+<%-- <link rel="stylesheet" href="${path }/css/video/player.css">
 <script type="text/javascript" src="${path }/js/jsPlayer.js"></script>
-<script type="text/javascript" src="${path }/js/dtooltip-min.js"></script>
+<script type="text/javascript" src="${path }/js/dtooltip-min.js"></script> --%>
+<script type="text/javascript" src="${path }/js/ckplayer/ckplayer.js" charset="utf-8"></script>
 </head>
 <body class="home blog">
 <jsp:include page="/include/video/header.jsp"></jsp:include>
@@ -26,37 +27,7 @@
 			<div class="video-wrapper">
 				<c:choose>
 				<c:when test="${!empty video.url && video.url!='-no-auth' && video.type==1 }">
-					<div class="playContent">
-				        <div class="playScreen">
-				            <video id="myVideo">
-				                <source src="${path }/video/get_video/${video.id }.mp4" type="video/mp4">
-				            </video>
-				        </div>
-				        <div class="proLines">
-				            <div id="origin" class="arial">00:00:00</div>
-				            <div class="line">
-				                <div class="isPlayLine">
-				                    <div class="currentCircle">
-				
-				                    </div>
-				                </div>
-				            </div>
-				            <div id="duration" class="arial"></div>
-				        </div>
-				        <div class="playBars">
-				            <div class="prevBar"><img src="${path}/images/prev.jpg" border="0" id="prev"></div>
-				            <div class="startBar"><img src="${path}/images/stop.jpg" border="0" id="imgStatus"></div>
-				            <div class="nextBar"><img src="${path}/images/next.jpg" border="0" id="next"></div>
-				            <div class="voiceContent">
-				                <div class="voice">
-				                    <img src="${path}/images/voice.jpg" id="voiceImg" border="0">
-				                </div>
-				                <div class="voiceline">
-				                    <div class="voicekuai"></div>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
+					<div id="ckplayer-div" data-url="${path }/video/get_video/${video.id }.mp4"></div>
 				</c:when>
 				<c:when test="${video.type==2 }">
 					${video.url }
@@ -123,7 +94,16 @@
 	$(function(){
 		//$('#switcher').themeswitcher();
 		//$('video').video();
-		var ps=new jsPlayer("700","500","myVideo");
+		//var ps=new jsPlayer("640","640","myVideo");
+		if( $("#ckplayer-div").length > 0 ) {
+			var url = $("#ckplayer-div").data("url");
+			var flashvars={
+		    	f:url,
+		        c:0
+		    };
+		}
+	    var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+	    CKobject.embedSWF('${path}/js/ckplayer/ckplayer.swf','ckplayer-div','ckplayer_a1','640','360',flashvars,params);
 	});
 </script>
 <%-- <script type='text/javascript' src='${path}/skin/ecms082/js/loader.js?ver=1.3'></script> --%>

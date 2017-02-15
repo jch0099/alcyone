@@ -98,6 +98,7 @@ public class VideoController extends BaseController {
 				if( !c ) video.setUrl("-no-auth");
 				request.setAttribute("video", video);
 			}
+			request.getSession().setAttribute("play_id", NumberUtil.toInt(id) );
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -105,9 +106,11 @@ public class VideoController extends BaseController {
 	}
 	@RequestMapping("/get_video/{id}.{ext}")
 	public void get_video(@PathVariable Integer id,@PathVariable String ext, HttpServletRequest request,HttpServletResponse response) throws Exception{
-		
 		try {
 			if( null == id || null == ext ) throw new DaoException("参数错误");
+			Integer temp_id = (Integer) request.getSession().getAttribute("play_id");
+			if( NumberUtil.toInt(id) != NumberUtil.toInt(temp_id) ) throw new DaoException("不可下载");
+			request.getSession().removeAttribute("play_id");
 			Video v = videoService.getVideo(id);
 			if( null == v ) throw new DaoException("未找到视频");
 			String filepath = Const.VIDEO_FLODER_ROOT + v.getUrl();
