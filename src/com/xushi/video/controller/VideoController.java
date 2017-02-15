@@ -57,9 +57,9 @@ public class VideoController extends BaseController {
 			request.setAttribute("ads", ads);
 			
 			PageRequest pr = new PageRequest(pageno, 30);
-			Sort sort = new Sort(false, "update_time");
+			Sort sort = new Sort(false, "create_time");
 			if( NumberUtil.toInt(sorttype) == 1 ) {
-				sort = new Sort(false, "read_num","update_time");
+				sort = new Sort(false, "read_num","create_time");
 			}
 			pr.setSort(sort);
 			Page<Video> page = videoService.findVideoPage(null,null,1,pr);

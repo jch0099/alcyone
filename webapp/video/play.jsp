@@ -101,9 +101,9 @@
 		    	f:url,
 		        c:0
 		    };
+		    //var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+		    CKobject.embedSWF('${path}/js/ckplayer/ckplayer.swf','ckplayer-div','ckplayer_a1','640','360',flashvars,{});
 		}
-	    var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-	    CKobject.embedSWF('${path}/js/ckplayer/ckplayer.swf','ckplayer-div','ckplayer_a1','640','360',flashvars,params);
 	});
 </script>
 <%-- <script type='text/javascript' src='${path}/skin/ecms082/js/loader.js?ver=1.3'></script> --%>
